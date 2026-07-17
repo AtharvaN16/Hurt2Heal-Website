@@ -14,6 +14,7 @@ will keep evolving as the client refines it.
 
 - **Framework:** Next.js (App Router, TypeScript, Tailwind), deployed on
   Vercel, hosted on the client's existing domain (DNS repointed, no transfer).
+- **Package manager / runtime:** Bun (`bun install`, `bun dev`, `bun run build`).
 - **Motion:** Framer Motion, for restrained, non-jarring interaction (nothing
   that reads as "flashy" — this is a trauma-informed site).
 - **Content:** currently hardcoded via `src/lib/content.ts`. A real CMS
