@@ -3,6 +3,11 @@
 Claude Code discovers skills at `.claude/skills/<name>/SKILL.md`. These are committed
 to the repo so every session (and every collaborator) gets the same set.
 
+The same skill set is duplicated at `.agents/skills/` for any other agent-agnostic
+harness (Codex, Cursor, etc. that follow the `.agents/skills/` convention). The two
+trees are kept in sync manually — if you add/update a skill here, mirror the change
+there too (see that folder's own README for details).
+
 ## Sources
 
 - **mattpocock-skills** — engineering + productivity skills, vendored from
