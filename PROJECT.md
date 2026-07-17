@@ -30,6 +30,9 @@ will keep evolving as the client refines it.
 
 ## Rough phases
 
+Execution status and checklists for each phase live in [`phases/`](phases/README.md) —
+this section stays as the rough narrative sketch.
+
 1. **Foundations (current)** — repo, branching, skills tooling, Next.js
    scaffold with placeholder routes/content pulled from the client's doc.
 2. **Design system** — build the visual language in Figma (palette, type
