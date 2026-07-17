@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local design previews (not shipped)
+/design-preview/
+
+# local phase-tracking notes
+/phases/
