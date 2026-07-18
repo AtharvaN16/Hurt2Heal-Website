@@ -1,0 +1,18 @@
+/* Icon tokens — mirrored from Figma source of truth (page "✦ Icons & Graphics", 77:2). Do not alter values. */
+
+:root {
+  --icon-size-xs: 16px;
+  --icon-size-sm: 20px;
+  --icon-size-md: 24px;
+  --icon-size-lg: 32px;
+  --icon-size-xl: 40px;
+  --icon-size-xxl: 48px;
+  --icon-hit-area-default: 48px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --icon-size-xl: 32px;
+    --icon-size-xxl: 40px;
+  }
+}

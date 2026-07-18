@@ -1,17 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lora, Lato } from "next/font/google";
+import localFont from "next/font/local";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lora = Lora({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lato = Lato({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+// Lato Medium (500) isn't served by Google Fonts' static Lato family — self-hosted from the OFL release for Subheading.
+const latoMedium = localFont({
+  variable: "--font-sans-medium",
+  src: "../fonts/Lato-Medium.ttf",
+  weight: "500",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${lora.variable} ${lato.variable} ${latoMedium.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SiteNav />

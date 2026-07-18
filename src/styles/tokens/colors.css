@@ -1,0 +1,237 @@
+/*
+ * Color primitives + semantic color mapping.
+ * Source of truth: Figma file `ho61vxCONa5g0o7xVdcZ2C`, `Color` and
+ * `Semantic Color` variable collections. Values are client-approved —
+ * do not alter, round, or invent values here.
+ */
+
+:root {
+  /* Plum */
+  --plum-50: #fcf2fd;
+  --plum-100: #f6e0fa;
+  --plum-200: #edbff3;
+  --plum-300: #e193ec;
+  --plum-400: #d364e2;
+  --plum-500: #c838db;
+  --plum-600: #b024c2;
+  --plum-700: #911da0;
+  --plum-800: #71177d;
+  --plum-900: #52105b;
+  --plum-1000: #320a38;
+
+  /* Rose */
+  --rose-50: #fcf3f8;
+  --rose-100: #f7e3ee;
+  --rose-200: #edc4db;
+  --rose-300: #e39cc2;
+  --rose-400: #d571a8;
+  --rose-500: #cb4990;
+  --rose-600: #b23479;
+  --rose-700: #932a64;
+  --rose-800: #73214e;
+  --rose-900: #531838;
+  --rose-1000: #330f23;
+
+  /* Neutral Brand */
+  --neutral-brand-50: #f8f7f8;
+  --neutral-brand-100: #efebef;
+  --neutral-brand-200: #ddd5dd;
+  --neutral-brand-300: #c6b9c6;
+  --neutral-brand-400: #ac9aac;
+  --neutral-brand-500: #957e95;
+  --neutral-brand-600: #7e677e;
+  --neutral-brand-700: #685568;
+  --neutral-brand-800: #514351;
+  --neutral-brand-900: #3b303b;
+  --neutral-brand-1000: #241e24;
+
+  /* Red */
+  --red-50: #fbf4f3;
+  --red-100: #f7e5e4;
+  --red-200: #edc8c4;
+  --red-300: #e2a49d;
+  --red-400: #d57c72;
+  --red-500: #c9574a;
+  --red-600: #b14135;
+  --red-700: #91362b;
+  --red-800: #722a22;
+  --red-900: #521e19;
+  --red-1000: #33130f;
+
+  /* Burgundy */
+  --burgundy-50: #fbf4f5;
+  --burgundy-100: #f6e5e7;
+  --burgundy-200: #ebc6cd;
+  --burgundy-300: #dea1ab;
+  --burgundy-400: #cf7786;
+  --burgundy-500: #c25164;
+  --burgundy-600: #aa3c4e;
+  --burgundy-700: #8c3140;
+  --burgundy-800: #6d2632;
+  --burgundy-900: #4f1c24;
+  --burgundy-1000: #311117;
+
+  /* Orange */
+  --orange-50: #fcf7f3;
+  --orange-100: #f7ece3;
+  --orange-200: #eed6c3;
+  --orange-300: #e3ba9c;
+  --orange-400: #d79c70;
+  --orange-500: #cb8148;
+  --orange-600: #b36a32;
+  --orange-700: #93572a;
+  --orange-800: #734421;
+  --orange-900: #543218;
+  --orange-1000: #341f0f;
+
+  /* Yellow */
+  --yellow-50: #fdfcf1;
+  --yellow-100: #fbf9df;
+  --yellow-200: #f7f1ba;
+  --yellow-300: #f2e88c;
+  --yellow-400: #edde5a;
+  --yellow-500: #e8d52c;
+  --yellow-600: #cfbc17;
+  --yellow-700: #aa9b13;
+  --yellow-800: #85790f;
+  --yellow-900: #60580b;
+  --yellow-1000: #3c3607;
+
+  /* Lime */
+  --lime-50: #f9fcf3;
+  --lime-100: #f0f7e3;
+  --lime-200: #e0eec4;
+  --lime-300: #cbe29c;
+  --lime-400: #b4d671;
+  --lime-500: #9fca49;
+  --lime-600: #88b234;
+  --lime-700: #70922a;
+  --lime-800: #587321;
+  --lime-900: #3f5318;
+  --lime-1000: #27330f;
+
+  /* Green */
+  --green-50: #f4fbf7;
+  --green-100: #e5f5ed;
+  --green-200: #c8ead9;
+  --green-300: #a3dbbf;
+  --green-400: #7bcca3;
+  --green-500: #56bd8a;
+  --green-600: #40a573;
+  --green-700: #35885e;
+  --green-800: #296a4a;
+  --green-900: #1e4d36;
+  --green-1000: #133021;
+
+  /* Teal */
+  --teal-50: #f4fafb;
+  --teal-100: #e5f2f5;
+  --teal-200: #c8e4ea;
+  --teal-300: #a3d2db;
+  --teal-400: #7bbecc;
+  --teal-500: #56acbd;
+  --teal-600: #4094a5;
+  --teal-700: #357a88;
+  --teal-800: #29606a;
+  --teal-900: #1e454d;
+  --teal-1000: #132b30;
+
+  /* Blue */
+  --blue-50: #f4f7fb;
+  --blue-100: #e4edf6;
+  --blue-200: #c6d7ec;
+  --blue-300: #9fbddf;
+  --blue-400: #75a0d1;
+  --blue-500: #4f86c4;
+  --blue-600: #396fac;
+  --blue-700: #2f5b8e;
+  --blue-800: #25476f;
+  --blue-900: #1b3450;
+  --blue-1000: #112032;
+
+  /* Base (true gray) */
+  --gray-0: #ffffff;
+  --gray-50: #f7f7f7;
+  --gray-100: #ededed;
+  --gray-200: #d9d9d9;
+  --gray-300: #bfbfbf;
+  --gray-400: #a3a3a3;
+  --gray-500: #8a8a8a;
+  --gray-600: #737373;
+  --gray-700: #5e5e5e;
+  --gray-800: #4a4a4a;
+  --gray-900: #363636;
+  --gray-1000: #212121;
+  --gray-1100: #000000;
+
+  /* Warm */
+  --warm-0: #f9f8f6;
+  --warm-50: #f5f3ef;
+  --warm-100: #f1eee9;
+  --warm-200: #e2dccf;
+  --warm-300: #d0c5af;
+  --warm-400: #bcac8b;
+  --warm-500: #a9946a;
+  --warm-600: #917d55;
+  --warm-700: #776746;
+  --warm-800: #5d5037;
+  --warm-900: #433a28;
+  --warm-1000: #292419;
+
+  /* Cool */
+  --cool-0: #f6f6f9;
+  --cool-50: #f0f0f4;
+  --cool-100: #eaedf0;
+  --cool-200: #d3d7de;
+  --cool-300: #b5bcca;
+  --cool-400: #959eb2;
+  --cool-500: #76849d;
+  --cool-600: #616c85;
+  --cool-700: #4f596e;
+  --cool-800: #3e4556;
+  --cool-900: #2d323e;
+  --cool-1000: #1c1f26;
+
+  /* Neutral Text */
+  --neutral-text-primary: #201f1d;
+  --neutral-text-secondary: #55534e;
+  --neutral-text-tertiary: #706d67;
+  --neutral-text-disabled: #aaa7a3;
+  --neutral-text-inverse: #fafafa;
+
+  /* Black Alpha */
+  --black-alpha-5: rgba(0, 0, 0, 0.05);
+  --black-alpha-10: rgba(0, 0, 0, 0.1);
+  --black-alpha-20: rgba(0, 0, 0, 0.2);
+  --black-alpha-30: rgba(0, 0, 0, 0.3);
+  --black-alpha-40: rgba(0, 0, 0, 0.4);
+  --black-alpha-50: rgba(0, 0, 0, 0.5);
+  --black-alpha-60: rgba(0, 0, 0, 0.6);
+  --black-alpha-70: rgba(0, 0, 0, 0.7);
+  --black-alpha-80: rgba(0, 0, 0, 0.8);
+  --black-alpha-90: rgba(0, 0, 0, 0.9);
+  --black-alpha-95: rgba(0, 0, 0, 0.95);
+
+  /* White Alpha */
+  --white-alpha-5: rgba(255, 255, 255, 0.05);
+  --white-alpha-10: rgba(255, 255, 255, 0.1);
+  --white-alpha-20: rgba(255, 255, 255, 0.2);
+  --white-alpha-30: rgba(255, 255, 255, 0.3);
+  --white-alpha-40: rgba(255, 255, 255, 0.4);
+  --white-alpha-50: rgba(255, 255, 255, 0.5);
+  --white-alpha-60: rgba(255, 255, 255, 0.6);
+  --white-alpha-70: rgba(255, 255, 255, 0.7);
+  --white-alpha-80: rgba(255, 255, 255, 0.8);
+  --white-alpha-90: rgba(255, 255, 255, 0.9);
+  --white-alpha-95: rgba(255, 255, 255, 0.95);
+}
+
+/* Semantic color layer — exposed to Tailwind v4 as utility-generating tokens. */
+@theme inline {
+  --color-bg-base: var(--warm-50);
+  --color-text-primary: var(--neutral-text-primary);
+  --color-text-secondary: var(--neutral-text-secondary);
+  --color-text-tertiary: var(--neutral-text-tertiary);
+  --color-text-disabled: var(--neutral-text-disabled);
+  --color-text-inverse: var(--neutral-text-inverse);
+}

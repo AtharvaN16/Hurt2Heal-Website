@@ -1,0 +1,59 @@
+/* Spacing tokens — mirrored from Figma source of truth (page "]I[ Spacing", 36:3). Do not alter values. */
+
+:root {
+  /* Primitives (collection VariableCollectionId:38:2, 4px base unit) */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+  --space-48: 192px;
+  --space-64: 256px;
+}
+
+@theme inline {
+  /* Inset (padding inside components) — identical at mobile, no media query needed */
+  --spacing-inset-xxs: var(--space-1); /* 4px */
+  --spacing-inset-xs: var(--space-2); /* 8px */
+  --spacing-inset-sm: var(--space-3); /* 12px */
+  --spacing-inset-md: var(--space-4); /* 16px */
+  --spacing-inset-lg: var(--space-6); /* 24px */
+  --spacing-inset-xl: var(--space-8); /* 32px */
+  --spacing-inset-xxl: var(--space-12); /* 48px */
+
+  /* Inline (horizontal gap) — identical at mobile, no media query needed */
+  --spacing-inline-xxs: var(--space-1); /* 4px */
+  --spacing-inline-xs: var(--space-2); /* 8px */
+  --spacing-inline-sm: var(--space-3); /* 12px */
+  --spacing-inline-md: var(--space-4); /* 16px */
+  --spacing-inline-lg: var(--space-5); /* 20px */
+  --spacing-inline-xl: var(--space-6); /* 24px */
+  --spacing-inline-xxl: var(--space-8); /* 32px */
+
+  /* Stack (vertical gap) — desktop/base values; lg/xl/xxl shrink at mobile (see media query below) */
+  --spacing-stack-xxs: var(--space-1); /* 4px */
+  --spacing-stack-xs: var(--space-2); /* 8px */
+  --spacing-stack-sm: var(--space-4); /* 16px */
+  --spacing-stack-md: var(--space-6); /* 24px */
+  --spacing-stack-lg: var(--space-10); /* 40px desktop -> 24px mobile */
+  --spacing-stack-xl: var(--space-16); /* 64px desktop -> 40px mobile */
+  --spacing-stack-xxl: var(--space-24); /* 96px desktop -> 48px mobile */
+}
+
+@media (max-width: 767px) {
+  :root {
+    --spacing-stack-lg: var(--space-6); /* 24px mobile */
+    --spacing-stack-xl: var(--space-10); /* 40px mobile */
+    --spacing-stack-xxl: var(--space-12); /* 48px mobile */
+  }
+}
