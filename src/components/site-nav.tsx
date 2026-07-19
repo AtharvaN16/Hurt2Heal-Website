@@ -222,10 +222,10 @@ export function SiteNav() {
         className={isHelpOpen ? "invisible" : ""}
       >
         <div className="flex flex-wrap items-center justify-between gap-6 px-5 py-4 md:px-10 lg:px-16">
-          <Link href="/" className="text-title-sm text-text-brand">
+          <Link href="/" className="text-title-sm text-text-brand flex-shrink-0">
             H2H
           </Link>
-          <ul className="flex flex-wrap items-center gap-x-8 gap-y-2 text-body-md">
+          <ul className="flex-1 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-body-md">
             {links.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="hover:underline">
@@ -236,7 +236,7 @@ export function SiteNav() {
           </ul>
           <Link
             href="/get-involved"
-            className="rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse"
+            className="rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse flex-shrink-0"
           >
             Register for a Session
           </Link>
