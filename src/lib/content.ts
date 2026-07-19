@@ -66,9 +66,9 @@ export function getAboutContent(): AboutContent {
       "We strictly prohibit session recordings to protect your absolute privacy.",
       "There is no pressure to speak or turn on your camera. You are welcome to show up exactly as you are, even if that means just sitting back and listening.",
       "You belong here, whether your experience happened yesterday or decades ago.",
-      "Whether you are here to attend our sessions, access educational resources, or learn how to support a loved one, we are honored to walk alongside you.",
+      "Whether you are here to attend our monthly sessions, access educational resources, or learn how to support a loved one, we are honored to walk alongside you.",
     ],
-    signoff: "With deep respect and hope,\nHurt 2 Heal",
+    signoff: "Hurt 2 Heal",
   };
 }
 

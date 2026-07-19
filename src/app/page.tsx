@@ -214,6 +214,26 @@ export default function Home() {
           >
             {introParagraphs[1]}
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
+            className="text-body-xl text-text-secondary"
+          >
+            Whether you are here to attend our monthly sessions, access educational resources, or learn how to support a loved one, we are honored to walk alongside you.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
+            className="text-body-xl text-text-secondary"
+          >
+            With deep respect and hope,
+            <br />
+            <strong className="font-semibold text-text-primary">Hurt 2 Heal</strong>
+          </motion.p>
         </div>
       </section>
 

@@ -13,8 +13,12 @@ export default function AboutPage() {
         {content.welcomeBody.map((paragraph, i) => (
           <p key={i}>{paragraph}</p>
         ))}
+        <p>
+          With deep respect and hope,
+          <br />
+          <strong className="font-semibold text-text-primary">{content.signoff}</strong>
+        </p>
       </div>
-      <p className="mt-8 whitespace-pre-line font-medium">{content.signoff}</p>
     </PageShell>
   );
 }
