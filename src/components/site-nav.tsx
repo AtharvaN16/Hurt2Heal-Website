@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -81,6 +81,23 @@ const BUTTONS_DELAY = 0.9;
 
 export function SiteNav() {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    function handleScroll() {
+      const y = window.scrollY;
+      const direction = y - lastScrollY.current;
+      if (direction > 5 && y > 80) {
+        setNavHidden(true);
+      } else if (direction < -5) {
+        setNavHidden(false);
+      }
+      lastScrollY.current = y;
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const utilityRow = (
     <div className="flex items-center justify-between gap-4 px-5 py-2 text-body-sm text-text-primary md:px-10 lg:px-16">
@@ -217,15 +234,15 @@ export function SiteNav() {
       </div>
       <motion.nav
         initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+        animate={{ y: navHidden ? -60 : 0, opacity: navHidden ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: EASE }}
         className={isHelpOpen ? "invisible" : ""}
       >
-        <div className="flex flex-wrap items-center justify-between gap-6 px-5 py-4 md:px-10 lg:px-16">
-          <Link href="/" className="text-title-sm text-text-brand flex-shrink-0">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-5 py-4 md:px-10 lg:px-16">
+          <Link href="/" className="text-title-sm text-text-brand justify-self-start">
             H2H
           </Link>
-          <ul className="flex-1 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-body-md">
+          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-body-md">
             {links.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="hover:underline">
@@ -236,7 +253,7 @@ export function SiteNav() {
           </ul>
           <Link
             href="/get-involved"
-            className="rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse flex-shrink-0"
+            className="justify-self-end rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse"
           >
             Register for a Session
           </Link>

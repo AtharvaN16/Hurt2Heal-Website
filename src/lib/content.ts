@@ -4,10 +4,17 @@
 
 export type CTA = { label: string; href: string };
 
+export type Promise = { label: string; text: string };
+
 export type HomeContent = {
   headline: string;
   subheadline: string;
   ctas: CTA[];
+  introHeadingPre: string;
+  introHeadingEmphasis: string;
+  introHeadingPost: string;
+  introParagraphs: string[];
+  promises: Promise[];
 };
 
 export function getHomeContent(): HomeContent {
@@ -18,6 +25,27 @@ export function getHomeContent(): HomeContent {
     ctas: [
       { label: "Join a Session", href: "/get-involved" },
       { label: "Learn About Our Mission", href: "/about" },
+    ],
+    introHeadingPre: "You are ",
+    introHeadingEmphasis: "not alone",
+    introHeadingPost: ". You are safe here.",
+    introParagraphs: [
+      "Welcome to Hurt 2 Heal. While trauma can deeply alter our lives, community education and peer-led support can completely transform our healing journey.",
+      "Taking the first step takes immense courage. Because of that, we treat your trust as sacred. Our virtual workshops and community spaces are designed to be secure, supportive environments where you have complete control over your experience.",
+    ],
+    promises: [
+      {
+        label: "Absolute Privacy:",
+        text: "We strictly prohibit session recordings to protect your peace of mind.",
+      },
+      {
+        label: "Zero Pressure:",
+        text: "There is no pressure to speak or turn on your camera. You are welcome to show up exactly as you are, even if that means just sitting back and listening.",
+      },
+      {
+        label: "You belong here:",
+        text: "whether your experience happened yesterday or decades ago.",
+      },
     ],
   };
 }
