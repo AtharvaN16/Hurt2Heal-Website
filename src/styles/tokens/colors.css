@@ -229,9 +229,14 @@
 /* Semantic color layer — exposed to Tailwind v4 as utility-generating tokens. */
 @theme inline {
   --color-bg-base: var(--warm-50);
+  --gradient-bg-hero: linear-gradient(180deg, var(--plum-300), var(--color-bg-base));
   --color-text-primary: var(--neutral-text-primary);
   --color-text-secondary: var(--neutral-text-secondary);
   --color-text-tertiary: var(--neutral-text-tertiary);
   --color-text-disabled: var(--neutral-text-disabled);
   --color-text-inverse: var(--neutral-text-inverse);
+
+  /* Header surfaces */
+  --color-surface-cta: var(--plum-900);
+  --color-text-brand: var(--plum-900);
 }

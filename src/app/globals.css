@@ -4,8 +4,15 @@
 @import "../styles/tokens/spacing.css";
 @import "../styles/tokens/icons.css";
 
+/* Gradient + grain flattened into a single body background (two
+   background-image layers blended together) instead of a separate fixed
+   overlay, so it scrolls as one piece with no duplicate/stacked layers. */
 body {
-  background: var(--color-bg-base);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='1' stitchTiles='stitch' result='noise'/><feColorMatrix in='noise' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.18 0.18 0.18 0 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+    var(--gradient-bg-hero);
+  background-repeat: repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  background-blend-mode: overlay, normal;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Lora, Lato } from "next/font/google";
 import localFont from "next/font/local";
 import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const lora = Lora({
@@ -38,12 +37,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${lora.variable} ${lato.variable} ${latoMedium.variable} h-full antialiased`}
+      className={`${lora.variable} ${lato.variable} ${latoMedium.variable} min-h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SiteNav />
         {children}
-        <SiteFooter />
       </body>
     </html>
   );
