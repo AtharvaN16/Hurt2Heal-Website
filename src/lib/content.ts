@@ -35,15 +35,15 @@ export function getHomeContent(): HomeContent {
     ],
     promises: [
       {
-        label: "Absolute Privacy:",
+        label: "Absolute Privacy",
         text: "We strictly prohibit session recordings to protect your peace of mind.",
       },
       {
-        label: "Zero Pressure:",
+        label: "Zero Pressure",
         text: "There is no pressure to speak or turn on your camera. You are welcome to show up exactly as you are, even if that means just sitting back and listening.",
       },
       {
-        label: "You belong here:",
+        label: "You belong here",
         text: "whether your experience happened yesterday or decades ago.",
       },
     ],

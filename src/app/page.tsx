@@ -110,57 +110,128 @@ export default function Home() {
         </div>
       </main>
 
-      <section className="mx-auto max-w-3xl px-6 py-32 text-center">
+      <section className="w-full px-6 md:px-12 lg:px-16 pt-12 pb-32 text-left flex flex-col md:flex-row md:justify-between items-start gap-12">
         <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.08,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="text-title-md text-text-primary"
+          className="text-title-md text-text-primary leading-tight md:max-w-md flex flex-wrap"
         >
-          {introHeadingPre}
-          <em className="text-text-brand italic">
-            {introHeadingEmphasis}
-          </em>
-          {introHeadingPost}
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, filter: "blur(12px)" },
+              visible: { opacity: 1, filter: "blur(0px)" },
+            }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="mr-[0.25em]"
+          >
+            You
+          </motion.span>
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, filter: "blur(12px)" },
+              visible: { opacity: 1, filter: "blur(0px)" },
+            }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="mr-[0.25em]"
+          >
+            are
+          </motion.span>
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, filter: "blur(12px)" },
+              visible: { opacity: 1, filter: "blur(0px)" },
+            }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="text-text-brand italic font-medium mr-[0.25em]"
+          >
+            not alone.
+          </motion.span>
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, filter: "blur(12px)" },
+              visible: { opacity: 1, filter: "blur(0px)" },
+            }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="mr-[0.25em]"
+          >
+            You
+          </motion.span>
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, filter: "blur(12px)" },
+              visible: { opacity: 1, filter: "blur(0px)" },
+            }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="mr-[0.25em]"
+          >
+            are
+          </motion.span>
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, filter: "blur(12px)" },
+              visible: { opacity: 1, filter: "blur(0px)" },
+            }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="mr-[0.25em]"
+          >
+            safe
+          </motion.span>
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, filter: "blur(12px)" },
+              visible: { opacity: 1, filter: "blur(0px)" },
+            }}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            here.
+          </motion.span>
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-          className="text-subheading-md text-text-primary mt-4"
-        >
-          {introParagraphs[0]}
-        </motion.p>
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-          className="text-body-xl text-text-secondary mt-16"
-        >
-          {introParagraphs[1]}
-        </motion.p>
+        <div className="space-y-8 md:max-w-xl">
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+            className="text-subheading-md text-text-primary"
+          >
+            {introParagraphs[0]}
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
+            className="text-body-xl text-text-secondary"
+          >
+            {introParagraphs[1]}
+          </motion.p>
+        </div>
       </section>
 
-      <section className="space-y-24 px-5 py-32 md:px-10 lg:px-16">
+      <section className="space-y-32 px-5 py-32 md:px-10 lg:px-16">
         {promises.map((promise, i) => (
-          <motion.p
+          <motion.div
             key={promise.label}
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
-            className={`text-subheading-lg max-w-2xl text-left ${
-              i % 2 === 1 ? "ml-auto" : ""
-            }`}
+            className={`max-w-md text-left ${i % 2 === 1 ? "ml-auto" : ""}`}
           >
-            <em className="text-text-brand italic">
-              {promise.label}
-            </em>{" "}
-            <span className="text-text-primary">{promise.text}</span>
-          </motion.p>
+            <p className="text-title-xs text-text-brand">{promise.label}</p>
+            <p className="text-subheading-md text-text-primary mt-3">
+              {promise.text}
+            </p>
+          </motion.div>
         ))}
       </section>
     </>
