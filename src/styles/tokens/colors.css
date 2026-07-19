@@ -1,36 +1,35 @@
 /*
  * Color primitives + semantic color mapping.
  * Source of truth: Figma file `ho61vxCONa5g0o7xVdcZ2C`, `Color` and
- * `Semantic Color` variable collections. Values are client-approved —
- * do not alter, round, or invent values here.
+ * `Semantic Color` variable collections.
  */
 
 :root {
-  /* Plum */
-  --plum-50: #fcf2fd;
-  --plum-100: #f6e0fa;
-  --plum-200: #edbff3;
-  --plum-300: #e193ec;
-  --plum-400: #d364e2;
-  --plum-500: #c838db;
-  --plum-600: #b024c2;
-  --plum-700: #911da0;
-  --plum-800: #71177d;
-  --plum-900: #52105b;
-  --plum-1000: #320a38;
+  /* Magenta */
+  --magenta-50: #fdf2fc;
+  --magenta-100: #fae0f8;
+  --magenta-200: #f5bdef;
+  --magenta-300: #ee91e5;
+  --magenta-400: #e660d9;
+  --magenta-500: #df34ce;
+  --magenta-600: #cd20bc;
+  --magenta-700: #a41a96;
+  --magenta-800: #801475;
+  --magenta-900: #5d0e55;
+  --magenta-1000: #390934;
 
-  /* Rose */
-  --rose-50: #fcf3f8;
-  --rose-100: #f7e3ee;
-  --rose-200: #edc4db;
-  --rose-300: #e39cc2;
-  --rose-400: #d571a8;
-  --rose-500: #cb4990;
-  --rose-600: #b23479;
-  --rose-700: #932a64;
-  --rose-800: #73214e;
-  --rose-900: #531838;
-  --rose-1000: #330f23;
+  /* Purple */
+  --purple-50: #fbf3fc;
+  --purple-100: #f5e2f8;
+  --purple-200: #ebc2f0;
+  --purple-300: #dd99e6;
+  --purple-400: #ce6bda;
+  --purple-500: #c143d0;
+  --purple-600: #a92eb8;
+  --purple-700: #8b2698;
+  --purple-800: #6f1e79;
+  --purple-900: #4f1556;
+  --purple-1000: #300d35;
 
   /* Neutral Brand */
   --neutral-brand-50: #f8f7f8;
@@ -229,7 +228,7 @@
 /* Semantic color layer — exposed to Tailwind v4 as utility-generating tokens. */
 @theme inline {
   --color-bg-base: var(--warm-50);
-  --gradient-bg-hero: linear-gradient(180deg, var(--plum-300), var(--color-bg-base));
+  --gradient-bg-hero: linear-gradient(180deg, var(--magenta-300), var(--color-bg-base));
   --color-text-primary: var(--neutral-text-primary);
   --color-text-secondary: var(--neutral-text-secondary);
   --color-text-tertiary: var(--neutral-text-tertiary);
@@ -237,6 +236,6 @@
   --color-text-inverse: var(--neutral-text-inverse);
 
   /* Header surfaces */
-  --color-surface-cta: var(--plum-900);
-  --color-text-brand: var(--plum-900);
+  --color-surface-cta: var(--purple-800);
+  --color-text-brand: var(--purple-800);
 }
