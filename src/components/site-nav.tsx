@@ -108,11 +108,17 @@ export function SiteNav() {
         className="flex items-center gap-1 font-semibold"
       >
         Free, Confidential, 24/7 Support
-        <CaretDown
-          size={14}
-          weight="bold"
-          className={`transition-transform ${isHelpOpen ? "rotate-180" : ""}`}
-        />
+        <motion.span
+          animate={{ y: isHelpOpen ? 0 : [0, -3, 0] }}
+          transition={{ duration: 1.5, repeat: isHelpOpen ? 0 : Infinity, ease: "easeInOut" }}
+          className="flex"
+        >
+          <CaretDown
+            size={14}
+            weight="bold"
+            className={`transition-transform ${isHelpOpen ? "rotate-180" : ""}`}
+          />
+        </motion.span>
       </button>
       <RotatingText
         messages={[
