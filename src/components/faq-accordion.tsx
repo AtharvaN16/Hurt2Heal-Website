@@ -24,10 +24,10 @@ export function FAQAccordion({
         return (
           <motion.div
             key={faq.question}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }}
+            initial={isCompact ? undefined : { opacity: 0, y: 24 }}
+            whileInView={isCompact ? undefined : { opacity: 1, y: 0 }}
+            viewport={isCompact ? undefined : { once: true, amount: 0.6 }}
+            transition={isCompact ? undefined : { duration: 0.8, delay: i * 0.08, ease: EASE }}
             className="border-b border-text-disabled/30"
           >
             <button

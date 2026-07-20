@@ -43,7 +43,7 @@ export default function FAQPage() {
       </section>
 
       {/* FAQ Sections */}
-      <section className="mx-auto max-w-4xl px-6 mt-8 space-y-16">
+      <section className="mx-auto max-w-4xl px-6 mt-16 md:mt-20 space-y-16">
           {sections.map((section) => (
             <motion.div
               key={section.id}
