@@ -16,6 +16,8 @@ export type HomeContent = {
   introHeadingEmphasis: string;
   introHeadingPost: string;
   introParagraphs: string[];
+  founderName: string;
+  founderTitle: string;
   promises: Promise[];
   faqs: FAQ[];
 };
@@ -36,6 +38,8 @@ export function getHomeContent(): HomeContent {
       "Welcome to Hurt 2 Heal. While trauma can deeply alter our lives, community education and peer-led support can completely transform our healing journey.",
       "Taking the first step takes immense courage. Because of that, we treat your trust as sacred. Our virtual workshops and community spaces are designed to be secure, supportive environments where you have complete control over your experience.",
     ],
+    founderName: "Joyce Reed",
+    founderTitle: "Founder, Hurt 2 Heal",
     promises: [
       {
         label: "Absolute Privacy",

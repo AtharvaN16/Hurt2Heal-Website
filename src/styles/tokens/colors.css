@@ -228,7 +228,7 @@
 /* Semantic color layer — exposed to Tailwind v4 as utility-generating tokens. */
 @theme inline {
   --color-bg-base: var(--warm-50);
-  --gradient-bg-hero: linear-gradient(180deg, var(--magenta-300), var(--color-bg-base));
+  --gradient-bg-hero: linear-gradient(180deg, var(--magenta-100), var(--color-bg-base));
   --color-text-primary: var(--neutral-text-primary);
   --color-text-secondary: var(--neutral-text-secondary);
   --color-text-tertiary: var(--neutral-text-tertiary);

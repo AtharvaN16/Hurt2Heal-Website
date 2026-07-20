@@ -28,6 +28,8 @@ export default function Home() {
     introHeadingEmphasis,
     introHeadingPost,
     introParagraphs,
+    founderName,
+    founderTitle,
     promises,
     faqs,
   } = getHomeContent();
@@ -120,130 +122,130 @@ export default function Home() {
         </div>
       </main>
 
-      <section className="w-full px-6 md:px-12 lg:px-16 pt-12 pb-32 text-left flex flex-col md:flex-row md:justify-between items-start gap-12">
-        <motion.h2
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.08,
-              },
-            },
-          }}
-          initial="hidden"
-          whileInView="visible"
+      <section className="w-full px-6 md:px-12 lg:px-16 pt-12 pb-32 text-left flex flex-col md:flex-row md:justify-center items-start gap-6 md:gap-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
-          className="text-title-md text-text-primary leading-tight md:max-w-md flex flex-wrap"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="w-full shrink-0 space-y-4 md:w-96"
         >
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, filter: "blur(12px)" },
-              visible: { opacity: 1, filter: "blur(0px)" },
-            }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mr-[0.25em]"
-          >
-            You
-          </motion.span>
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, filter: "blur(12px)" },
-              visible: { opacity: 1, filter: "blur(0px)" },
-            }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mr-[0.25em]"
-          >
-            are
-          </motion.span>
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, filter: "blur(12px)" },
-              visible: { opacity: 1, filter: "blur(0px)" },
-            }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="text-text-brand italic font-medium mr-[0.25em]"
-          >
-            not alone.
-          </motion.span>
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, filter: "blur(12px)" },
-              visible: { opacity: 1, filter: "blur(0px)" },
-            }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mr-[0.25em]"
-          >
-            You
-          </motion.span>
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, filter: "blur(12px)" },
-              visible: { opacity: 1, filter: "blur(0px)" },
-            }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mr-[0.25em]"
-          >
-            are
-          </motion.span>
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, filter: "blur(12px)" },
-              visible: { opacity: 1, filter: "blur(0px)" },
-            }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mr-[0.25em]"
-          >
-            safe
-          </motion.span>
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, filter: "blur(12px)" },
-              visible: { opacity: 1, filter: "blur(0px)" },
-            }}
-            transition={{ duration: 0.6, ease: EASE }}
-          >
-            here.
-          </motion.span>
-        </motion.h2>
+          <div className="aspect-[4/5] w-full rounded-lg bg-[var(--neutral-brand-300)]" />
+          <div>
+            <p className="text-body-lg font-semibold text-text-primary">
+              {founderName}
+            </p>
+            <p className="text-body-md text-text-secondary">{founderTitle}</p>
+          </div>
+        </motion.div>
         <div className="space-y-8 md:max-w-xl">
-          <motion.p
+          <motion.h2
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.08,
+                },
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.6 }}
+            className="text-title-sm text-text-primary leading-tight flex flex-wrap"
+          >
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mr-[0.25em]"
+            >
+              You
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mr-[0.25em]"
+            >
+              are
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-text-brand italic font-medium mr-[0.25em]"
+            >
+              not alone.
+            </motion.span>
+            <span className="basis-full h-0" />
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mr-[0.25em]"
+            >
+              You
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mr-[0.25em]"
+            >
+              are
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mr-[0.25em]"
+            >
+              safe
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+            >
+              here.
+            </motion.span>
+          </motion.h2>
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-            className="text-subheading-md text-text-primary"
+            className="space-y-6"
           >
-            {introParagraphs[0]}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-            className="text-body-xl text-text-secondary"
-          >
-            {introParagraphs[1]}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
-            className="text-body-xl text-text-secondary"
-          >
-            Whether you are here to attend our monthly sessions, access educational resources, or learn how to support a loved one, we are honored to walk alongside you.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
-            className="text-body-xl text-text-secondary"
-          >
-            With deep respect and hope,
-            <br />
-            <strong className="font-semibold text-text-primary">Hurt 2 Heal</strong>
-          </motion.p>
+            <p className="text-subheading-sm text-text-primary">
+              {introParagraphs[0]}
+            </p>
+            <p className="text-body-lg text-text-secondary">
+              {introParagraphs[1]}
+            </p>
+            <p className="text-body-lg text-text-secondary">
+              Whether you are here to attend our monthly sessions, access educational resources, or learn how to support a loved one, we are honored to walk alongside you.
+            </p>
+            <p className="text-body-lg text-text-secondary">
+              With deep respect and hope,
+              <br />
+              <strong className="font-semibold text-text-primary">Hurt 2 Heal</strong>
+            </p>
+          </motion.div>
         </div>
       </section>
 

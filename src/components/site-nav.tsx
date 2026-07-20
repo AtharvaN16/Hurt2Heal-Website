@@ -251,7 +251,7 @@ export function SiteNav() {
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-body-md">
             {links.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:underline">
+                <Link href={link.href} className="hover:underline font-semibold">
                   {link.label}
                 </Link>
               </li>
@@ -259,7 +259,7 @@ export function SiteNav() {
           </ul>
           <Link
             href="/get-involved"
-            className="justify-self-end rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse"
+            className="justify-self-end rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse font-bold"
           >
             Register for a Session
           </Link>
