@@ -14,7 +14,7 @@ body {
   background-repeat: repeat, no-repeat;
   background-attachment: scroll, scroll;
   background-position: top, top;
-  background-size: auto, 100% 100vh;
+  background-size: auto, 100% 80vh;
   background-blend-mode: overlay, normal;
   color: var(--color-text-primary);
   font-family: var(--font-sans);

@@ -6,8 +6,16 @@ import type { FAQ } from "@/lib/content";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
-export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
+export function FAQAccordion({
+  faqs,
+  size = "default",
+}: {
+  faqs: FAQ[];
+  size?: "default" | "compact";
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const isCompact = size === "compact";
 
   return (
     <div>
@@ -26,9 +34,15 @@ export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-6 py-6 text-left"
+              className={`flex w-full items-center justify-between gap-6 text-left transition-colors duration-200 ${
+                isCompact ? "py-4" : "py-6"
+              }`}
             >
-              <span className="text-subheading-md text-text-primary">
+              <span
+                className={`text-text-primary ${
+                  isCompact ? "text-subheading-sm font-medium" : "text-subheading-md"
+                }`}
+              >
                 {faq.question}
               </span>
               <motion.span
@@ -62,7 +76,11 @@ export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
                   transition={{ duration: 0.4, ease: EASE }}
                   className="overflow-hidden"
                 >
-                  <p className="text-body-xl text-text-secondary pb-6 pr-10">
+                  <p
+                    className={`text-text-secondary ${
+                      isCompact ? "text-body-md pb-4 pr-6" : "text-body-xl pb-6 pr-10"
+                    }`}
+                  >
                     {faq.answer}
                   </p>
                 </motion.div>

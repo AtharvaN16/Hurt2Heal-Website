@@ -80,6 +80,96 @@ export function getHomeContent(): HomeContent {
   };
 }
 
+export type FAQSection = {
+  id: string;
+  title: string;
+  faqs: FAQ[];
+};
+
+export function getFAQSections(): FAQSection[] {
+  return [
+    {
+      id: "getting-started",
+      title: "Getting Started",
+      faqs: [
+        {
+          question: "What exactly is The Healing Lab?",
+          answer:
+            "It is a carefully structured, peer-led online space designed for community healing and education. Unlike a standard webinar where you just sit and watch, our spaces are interactive, supportive, and designed to let you engage safely at your own comfort level.",
+        },
+        {
+          question: "How do I register for an upcoming workshop, and is there a cost?",
+          answer:
+            "Registration is completely free and can be done right here on our website. Simply click the \"Register\" button, fill out our quick form, and you will automatically receive an email with your unique Zoom access link.",
+        },
+        {
+          question: "Is your organization a registered nonprofit?",
+          answer:
+            "Yes, Hurt 2 Heal is a dedicated nonprofit organization focused on community education and trauma-informed peer support.",
+        },
+      ],
+    },
+    {
+      id: "privacy-safety-boundaries",
+      title: "Privacy, Safety & Boundaries",
+      faqs: [
+        {
+          question: "Are these virtual sessions recorded?",
+          answer:
+            "No, we strictly prohibit the recording of our community sessions. Your privacy, safety, and emotional security are our absolute highest priorities. What is shared in our spaces stays in our spaces.",
+        },
+        {
+          question: "Do I have to turn my camera on or speak during a workshop?",
+          answer:
+            "Not if you don't want to. We want you to show up exactly as you are. While we love to see your face and hear your voice, you are completely free to keep your camera off, stay on mute, and simply listen or use the chat function if that feels safest for you.",
+        },
+        {
+          question: "How do I know it is safe to share in your virtual spaces?",
+          answer:
+            "We work hard to create a secure \"digital container.\" This means we do not allow sessions to be recorded under any circumstances. We also have a designated safety host in every session to monitor the space, and we establish mutual guidelines of confidentiality and deep respect at the very beginning of every single workshop.",
+        },
+        {
+          question: "What should I do if I get overwhelmed or triggered during a session?",
+          answer:
+            "Your emotional safety is paramount. We actively practice and encourage self-care during our workshops. If a topic feels too heavy, you are entirely free to step away from your screen, mute the audio, or leave the session early. Our tech hosts and safety moderators are also available via private Zoom chat during the session if you need a moment of grounding or support.",
+        },
+      ],
+    },
+    {
+      id: "what-to-expect",
+      title: "What to Expect",
+      faqs: [
+        {
+          question: "Are these workshops group therapy or crisis counseling?",
+          answer:
+            "No. Our programs are peer-led community spaces focused on education, trauma-informed self-care, and collective healing. We do not provide clinical therapy, medical advice, or legal/crisis advocacy. We are here to walk alongside you as peers on the healing journey, and we can help connect you with professional crisis resources if you need them.",
+        },
+        {
+          question: "I have never spoken out loud about my experience. Is it okay if I just sit and listen?",
+          answer:
+            "Absolutely. There is immense healing in just realizing you are not alone in the room. You have total control over your experience here. You are never forced to share, your camera can remain off, and you can engage entirely on your own terms when—and if—you feel ready.",
+        },
+        {
+          question: "Can I join a workshop if my abuse happened years ago?",
+          answer:
+            "Trauma does not have an expiration date, and neither does healing. Whether your experience happened yesterday or decades ago, your story is valid, and you are welcome in our spaces.",
+        },
+      ],
+    },
+    {
+      id: "for-friends-family-allies",
+      title: "For Friends, Family & Allies",
+      faqs: [
+        {
+          question: "I suspect a loved one is experiencing domestic violence or dealing with trauma. How can I help them?",
+          answer:
+            "The most powerful thing you can do is listen without judgment, believe them, and let them know they are not alone. Avoid judging their choices or pressuring them to leave a situation before they are ready, as this can sometimes increase isolation. You are welcome to attend our educational workshops to learn more about trauma-informed support, or share our resources with them safely.",
+        },
+      ],
+    },
+  ];
+}
+
 export type AboutContent = {
   welcomeTitle: string;
   welcomeBody: string[];
