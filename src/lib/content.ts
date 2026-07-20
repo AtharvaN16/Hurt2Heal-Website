@@ -6,6 +6,8 @@ export type CTA = { label: string; href: string };
 
 export type Promise = { label: string; text: string };
 
+export type FAQ = { question: string; answer: string };
+
 export type HomeContent = {
   headline: string;
   subheadline: string;
@@ -15,6 +17,7 @@ export type HomeContent = {
   introHeadingPost: string;
   introParagraphs: string[];
   promises: Promise[];
+  faqs: FAQ[];
 };
 
 export function getHomeContent(): HomeContent {
@@ -45,6 +48,33 @@ export function getHomeContent(): HomeContent {
       {
         label: "You belong here",
         text: "whether your experience happened yesterday or decades ago.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What exactly is The Healing Lab?",
+        answer:
+          "It is a carefully structured, peer-led online space designed for community healing and education. Unlike a standard webinar where you just sit and watch, our spaces are interactive, supportive, and designed to let you engage safely at your own comfort level.",
+      },
+      {
+        question: "Do I have to turn my camera on or speak during a workshop?",
+        answer:
+          "Not if you don't want to. We want you to show up exactly as you are. While we love to see your face and hear your voice, you are completely free to keep your camera off, stay on mute, and simply listen or use the chat function if that feels safest for you.",
+      },
+      {
+        question: "Are these virtual sessions recorded?",
+        answer:
+          "No, we strictly prohibit the recording of our community sessions. Your privacy, safety, and emotional security are our absolute highest priorities. What is shared in our spaces stays in our spaces.",
+      },
+      {
+        question: "Are these workshops group therapy or crisis counseling?",
+        answer:
+          "No. Our programs are peer-led community spaces focused on education, trauma-informed self-care, and collective healing. We do not provide clinical therapy, medical advice, or legal/crisis advocacy. We are here to walk alongside you as peers on the healing journey, and we can help connect you with professional crisis resources if you need them.",
+      },
+      {
+        question: "How do I register for an upcoming workshop, and is there a cost?",
+        answer:
+          "Registration is completely free and can be done right here on our website. Simply click the \"Register\" button, fill out our quick form, and you will automatically receive an email with your unique Zoom access link.",
       },
     ],
   };

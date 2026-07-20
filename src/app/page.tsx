@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { TextAnimate } from "@/components/text-animate";
+import { FAQAccordion } from "@/components/faq-accordion";
 import { getHomeContent } from "@/lib/content";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
@@ -19,8 +21,16 @@ const SUBHEADING_STAGGER = 0.08;
 const SUBHEADING_WORD_DURATION = 0.6;
 
 export default function Home() {
-  const { headline, subheadline, introHeadingPre, introHeadingEmphasis, introHeadingPost, introParagraphs, promises } =
-    getHomeContent();
+  const {
+    headline,
+    subheadline,
+    introHeadingPre,
+    introHeadingEmphasis,
+    introHeadingPost,
+    introParagraphs,
+    promises,
+    faqs,
+  } = getHomeContent();
   const [progress, setProgress] = useState(0);
   const progressRef = useRef(0);
   const [showSubheading, setShowSubheading] = useState(false);
@@ -78,7 +88,7 @@ export default function Home() {
   return (
     <>
       <main className="relative flex h-screen items-center justify-center overflow-hidden px-6">
-        <div className="relative -mt-32 w-full max-w-3xl text-center">
+        <div className="relative -mt-32 w-full max-w-2xl text-center">
           {heroVisible && (
             <motion.div
               style={{ opacity: 1 - heroFade, filter: `blur(${heroFade * 12}px)` }}
@@ -253,6 +263,78 @@ export default function Home() {
             </p>
           </motion.div>
         ))}
+      </section>
+
+      <section className="w-full px-6 md:px-12 lg:px-16 pt-12 pb-32 flex flex-col md:flex-row md:justify-between items-start gap-12">
+        <motion.div
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+          className="md:max-w-md"
+        >
+          <h2 className="text-title-md text-text-primary leading-tight flex flex-wrap">
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mr-[0.25em]"
+            >
+              Your
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mr-[0.25em]"
+            >
+              questions,
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, filter: "blur(12px)" },
+                visible: { opacity: 1, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="italic font-medium"
+            >
+              answered.
+            </motion.span>
+          </h2>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+            className="text-body-xl text-text-secondary mt-6"
+          >
+            Everything you need to know before joining a session.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
+          >
+            <Link
+              href="/faq"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse"
+            >
+              See all FAQs
+              <span aria-hidden="true">→</span>
+            </Link>
+          </motion.div>
+        </motion.div>
+        <div className="w-full md:max-w-2xl">
+          <FAQAccordion faqs={faqs} />
+        </div>
       </section>
     </>
   );
