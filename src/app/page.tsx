@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { TextAnimate } from "@/components/text-animate";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { FeaturedInLogoMark } from "@/components/featured-in";
 import { getHomeContent } from "@/lib/content";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
@@ -33,6 +34,8 @@ export default function Home() {
     founderTitle,
     promisesHeading,
     promises,
+    featuredInHeading,
+    featuredIn,
     testimonials,
     faqs,
   } = getHomeContent();
@@ -258,11 +261,11 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="text-title-sm text-text-brand"
+          className="text-title-sm text-text-brand text-center"
         >
           {promisesHeading}
         </motion.p>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-24 grid gap-6 md:grid-cols-3">
           {promises.map((promise, i) => (
             <motion.div
               key={promise.label}
@@ -283,6 +286,29 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      <section className="px-5 py-40 md:px-10 lg:px-16">
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="text-title-sm text-text-tertiary text-center"
+        >
+          {featuredInHeading}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+          className="mt-20 flex flex-wrap items-center justify-center gap-x-12 gap-y-8"
+        >
+          {featuredIn.map((logo) => (
+            <FeaturedInLogoMark key={logo.name} {...logo} />
+          ))}
+        </motion.div>
       </section>
 
       <section className="w-full bg-[var(--purple-900)] px-6 py-24 md:px-12 lg:px-16">

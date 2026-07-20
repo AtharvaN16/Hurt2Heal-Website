@@ -10,6 +10,13 @@ export type FAQ = { question: string; answer: string };
 
 export type Testimonial = { quote: string };
 
+export type FeaturedInLogo = {
+  name: string;
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type HomeContent = {
   headline: string;
   subheadline: string;
@@ -22,6 +29,8 @@ export type HomeContent = {
   founderTitle: string;
   promisesHeading: string;
   promises: Promise[];
+  featuredInHeading: string;
+  featuredIn: FeaturedInLogo[];
   testimonials: Testimonial[];
   faqs: FAQ[];
 };
@@ -58,6 +67,15 @@ export function getHomeContent(): HomeContent {
         label: "You belong here",
         text: "whether your experience happened yesterday or decades ago.",
       },
+    ],
+    featuredInHeading: "As Featured In",
+    featuredIn: [
+      { name: "rolling out", src: "/featured-in/rolling-out.svg", width: 1537, height: 622 },
+      { name: "B.O.S.S. Magazine", src: "/featured-in/boss-magazine.svg", width: 1196, height: 622 },
+      { name: "Bravo", src: "/featured-in/bravo.svg", width: 754, height: 622 },
+      { name: "Reality Check", src: "/featured-in/reality-check.svg", width: 995, height: 622 },
+      { name: "Stacks", src: "/featured-in/stacks.svg", width: 678, height: 622 },
+      { name: "Atlanta Daily World", src: "/featured-in/atlanta-daily-world.svg", width: 1466, height: 517 },
     ],
     testimonials: [
       {
