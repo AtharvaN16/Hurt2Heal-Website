@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { TextAnimate } from "@/components/text-animate";
 import { FAQAccordion } from "@/components/faq-accordion";
+import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { getHomeContent } from "@/lib/content";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
@@ -31,6 +32,7 @@ export default function Home() {
     founderName,
     founderTitle,
     promises,
+    testimonials,
     faqs,
   } = getHomeContent();
   const [progress, setProgress] = useState(0);
@@ -265,6 +267,21 @@ export default function Home() {
             </p>
           </motion.div>
         ))}
+      </section>
+
+      <section className="w-full bg-[var(--purple-900)] px-6 py-24 md:px-12 lg:px-16">
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="text-title-md text-text-inverse text-center"
+        >
+          Testimonials
+        </motion.h2>
+        <div className="mt-24">
+          <TestimonialsCarousel testimonials={testimonials} />
+        </div>
       </section>
 
       <section className="w-full px-6 md:px-12 lg:px-16 pt-12 pb-32 flex flex-col md:flex-row md:justify-between items-start gap-12">

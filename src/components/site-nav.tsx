@@ -149,9 +149,9 @@ export function SiteNav() {
         <motion.div
           layout
           initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: EASE }}
-          className="absolute inset-x-0 top-0 z-10 overflow-hidden bg-white/50 backdrop-blur-[80px]"
+          animate={{ opacity: navHidden ? 0 : 1, y: navHidden ? -60 : 0 }}
+          transition={{ duration: 0.3, ease: EASE }}
+          className="absolute inset-x-0 top-0 z-10 overflow-hidden bg-white/80 backdrop-blur-[80px]"
         >
           <motion.div layout="position">{utilityRow}</motion.div>
           <AnimatePresence mode="popLayout">
@@ -242,7 +242,7 @@ export function SiteNav() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ y: navHidden ? -60 : 0, opacity: navHidden ? 0 : 1 }}
         transition={{ duration: 0.3, ease: EASE }}
-        className={isHelpOpen ? "invisible" : ""}
+        className={`${isHelpOpen ? "invisible" : ""} bg-white/50 backdrop-blur-[80px]`}
       >
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-5 py-4 md:px-10 lg:px-16">
           <Link href="/" className="text-title-sm text-text-brand justify-self-start">

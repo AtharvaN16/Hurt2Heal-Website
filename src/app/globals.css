@@ -4,13 +4,18 @@
 @import "../styles/tokens/spacing.css";
 @import "../styles/tokens/icons.css";
 
+/* Shared grain texture (SVG fractal noise) — reused on the body background
+   and on any surface via the .bg-grain utility below. */
+:root {
+  --grain-texture: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='1' stitchTiles='stitch' result='noise'/><feColorMatrix in='noise' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.32 0.32 0.32 0 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
 /* Gradient + grain flattened into a single body background (two
    background-image layers blended together) instead of a separate fixed
    overlay, so it scrolls as one piece with no duplicate/stacked layers. */
 body {
   background-color: var(--color-bg-base);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='1' stitchTiles='stitch' result='noise'/><feColorMatrix in='noise' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.18 0.18 0.18 0 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-    var(--gradient-bg-hero);
+  background-image: var(--grain-texture), var(--gradient-bg-hero);
   background-repeat: repeat, no-repeat;
   background-attachment: scroll, scroll;
   background-position: top, top;
@@ -18,4 +23,30 @@ body {
   background-blend-mode: overlay, normal;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
+}
+
+/* Reusable grain overlay for cards/surfaces — sits above the element's own
+   background via mix-blend-mode, so it doesn't fight the element's fill or
+   require multiple background-image layers per surface. Consumers must
+   already be positioned (relative/absolute/fixed) themselves — this class
+   deliberately does not set `position`, since doing so can outrank a
+   Tailwind `absolute`/`fixed` utility on the same element at equal
+   specificity depending on cascade order. */
+.bg-grain {
+  isolation: isolate;
+}
+.bg-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--grain-texture);
+  background-repeat: repeat;
+  /* multiply (not overlay) — overlay has almost no visible effect on the
+     near-white card surfaces this is used on, since overlay collapses
+     toward a no-op as the base color approaches white. */
+  mix-blend-mode: multiply;
+  opacity: 0.12;
+  border-radius: inherit;
+  pointer-events: none;
 }
