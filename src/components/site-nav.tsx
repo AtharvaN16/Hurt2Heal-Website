@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   CaretDown,
   Phone,
@@ -245,8 +246,15 @@ export function SiteNav() {
         className={`${isHelpOpen ? "invisible" : ""} bg-white/50 backdrop-blur-[80px]`}
       >
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-5 py-4 md:px-10 lg:px-16">
-          <Link href="/" className="text-title-sm text-text-brand justify-self-start">
-            H2H
+          <Link href="/" className="justify-self-start flex items-center" aria-label="Hurt 2 Heal Home">
+            <Image
+              src="/logo.svg"
+              alt="Hurt 2 Heal"
+              width={64}
+              height={64}
+              className="h-16 w-16 shrink-0 -my-3"
+              priority
+            />
           </Link>
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-body-md">
             {links.map((link) => (

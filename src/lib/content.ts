@@ -20,6 +20,7 @@ export type HomeContent = {
   introParagraphs: string[];
   founderName: string;
   founderTitle: string;
+  promisesHeading: string;
   promises: Promise[];
   testimonials: Testimonial[];
   faqs: FAQ[];
@@ -43,6 +44,7 @@ export function getHomeContent(): HomeContent {
     ],
     founderName: "Joyce Reed",
     founderTitle: "Founder, Hurt 2 Heal",
+    promisesHeading: "Your comfort comes first.",
     promises: [
       {
         label: "Absolute Privacy",

@@ -31,6 +31,7 @@ export default function Home() {
     introParagraphs,
     founderName,
     founderTitle,
+    promisesHeading,
     promises,
     testimonials,
     faqs,
@@ -251,22 +252,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-32 px-5 py-32 md:px-10 lg:px-16">
-        {promises.map((promise, i) => (
-          <motion.div
-            key={promise.label}
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
-            className={`max-w-md text-left ${i % 2 === 1 ? "ml-auto" : ""}`}
-          >
-            <p className="text-title-xs text-text-brand">{promise.label}</p>
-            <p className="text-subheading-md text-text-primary mt-3">
-              {promise.text}
-            </p>
-          </motion.div>
-        ))}
+      <section className="px-5 py-32 md:px-10 lg:px-16">
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="text-title-sm text-text-brand"
+        >
+          {promisesHeading}
+        </motion.p>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {promises.map((promise, i) => (
+            <motion.div
+              key={promise.label}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
+              className="flex min-h-[420px] flex-col justify-end bg-white p-8"
+            >
+              <div className="min-h-[170px]">
+                <p className="text-title-xs text-text-brand">
+                  {promise.label}
+                </p>
+                <p className="text-body-xl text-text-primary mt-3">
+                  {promise.text}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <section className="w-full bg-[var(--purple-900)] px-6 py-24 md:px-12 lg:px-16">
@@ -284,7 +300,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full px-6 md:px-12 lg:px-16 pt-12 pb-32 flex flex-col md:flex-row md:justify-between items-start gap-12">
+      <section className="w-full px-6 md:px-12 lg:px-16 pt-48 pb-32 flex flex-col md:flex-row md:justify-between items-start gap-12">
         <motion.div
           variants={{
             hidden: {},

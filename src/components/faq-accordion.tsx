@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import type { FAQ } from "@/lib/content";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
@@ -76,13 +77,23 @@ export function FAQAccordion({
                   transition={{ duration: 0.4, ease: EASE }}
                   className="overflow-hidden"
                 >
-                  <p
+                  <div
                     className={`text-text-secondary ${
-                      isCompact ? "text-body-md pb-4 pr-6" : "text-body-xl pb-6 pr-10"
+                      isCompact ? "pb-4 pr-6" : "pb-6 pr-10"
                     }`}
                   >
-                    {faq.answer}
-                  </p>
+                    <p className={isCompact ? "text-body-md" : "text-body-xl"}>
+                      {faq.answer}
+                    </p>
+                    {faq.question.includes("How do I register for an upcoming workshop") && (
+                      <Link
+                        href="/get-involved"
+                        className="inline-flex items-center justify-center rounded-full bg-surface-cta px-5 py-2 text-body-sm text-text-inverse font-bold hover:opacity-90 transition-opacity mt-4"
+                      >
+                        Register
+                      </Link>
+                    )}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
