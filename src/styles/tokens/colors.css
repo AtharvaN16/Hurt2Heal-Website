@@ -229,6 +229,12 @@
 @theme inline {
   --color-bg-base: var(--warm-50);
   --gradient-bg-hero: linear-gradient(180deg, var(--magenta-100), var(--color-bg-base));
+  --gradient-bg-footer: linear-gradient(
+    180deg,
+    var(--color-bg-base) 0%,
+    #f4baee 31%,
+    var(--purple-900) 91%
+  );
   --color-text-primary: var(--neutral-text-primary);
   --color-text-secondary: var(--neutral-text-secondary);
   --color-text-tertiary: var(--neutral-text-tertiary);

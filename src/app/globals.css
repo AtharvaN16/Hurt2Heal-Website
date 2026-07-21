@@ -25,6 +25,30 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Footer background — same grain+gradient recipe as the body above
+   (grain blended via `overlay`, not the `.bg-grain` card treatment's
+   `multiply`), so the seam where the footer's own background begins
+   reads as a continuation of the page rather than a visible edge. */
+.bg-gradient-footer {
+  background-color: var(--color-bg-base);
+  background-image: var(--grain-texture), var(--gradient-bg-footer);
+  background-repeat: repeat, no-repeat;
+  background-position: top, top;
+  background-size: auto, 100% 100%;
+  background-blend-mode: overlay, normal;
+}
+
+/* Footer column-heading label — a one-off 24px serif size specified
+   directly against Figma dev-mode measurements, distinct from the shared
+   type ramp in typography.css (which has no 24px serif tier). */
+.text-footer-label {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-tight);
+}
+
 /* Reusable grain overlay for cards/surfaces — sits above the element's own
    background via mix-blend-mode, so it doesn't fight the element's fill or
    require multiple background-image layers per surface. Consumers must
