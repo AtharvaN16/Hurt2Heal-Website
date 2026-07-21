@@ -70,7 +70,7 @@ body {
      near-white card surfaces this is used on, since overlay collapses
      toward a no-op as the base color approaches white. */
   mix-blend-mode: multiply;
-  opacity: 0.12;
+  opacity: 0.04;
   border-radius: inherit;
   pointer-events: none;
 }

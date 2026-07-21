@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FacebookLogo, InstagramLogo, CalendarCheck } from "@phosphor-icons/react/dist/ssr";
+import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import { NewsletterForm } from "@/components/newsletter-form";
 
 const navLinks = [
@@ -75,33 +75,55 @@ export function SiteFooter() {
         <NewsletterForm />
 
         <div className="bg-grain relative mt-40 rounded-xl bg-[var(--color-bg-base)] p-6 md:mt-64 md:px-[54px] md:py-16">
-          <div className="group bg-grain relative overflow-hidden rounded-xl bg-[var(--purple-900)] px-8 py-6 md:px-12 md:py-7 min-h-[160px] md:min-h-[180px] flex flex-col justify-between">
-            {/* Silna Health-inspired bottom glow (subtle hover) */}
-            {/* Wide atmospheric glow layer */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-24 left-1/2 -translate-x-1/2 w-[130%] h-60 rounded-full bg-[radial-gradient(ellipse_at_bottom,_var(--magenta-400)_0%,_var(--purple-500)_40%,_var(--purple-800)_70%,_transparent_90%)] blur-2xl opacity-0 transition-all duration-500 ease-out group-hover:opacity-55 group-hover:scale-105"
-            />
-            {/* Soft core light emission layer */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-16 left-1/2 -translate-x-1/2 w-[90%] h-32 rounded-full bg-[radial-gradient(ellipse_at_bottom,_var(--magenta-200)_0%,_var(--magenta-400)_40%,_transparent_75%)] blur-xl opacity-0 transition-all duration-500 ease-out group-hover:opacity-50 group-hover:scale-105"
-            />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            {/* Box 1: Next Session Box (Left Half - No rounded edges, no icon) */}
+            <div className="group bg-grain relative overflow-hidden rounded-none bg-[var(--purple-900)] px-8 py-8 md:px-10 md:py-10 min-h-[160px] md:min-h-[180px] flex flex-col justify-between">
+              {/* Silna Health-inspired bottom glow (subtle hover) */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-24 left-1/2 -translate-x-1/2 w-[130%] h-60 rounded-full bg-[radial-gradient(ellipse_at_bottom,_var(--magenta-400)_0%,_var(--purple-500)_40%,_var(--purple-800)_70%,_transparent_90%)] blur-2xl opacity-0 transition-all duration-500 ease-out group-hover:opacity-55 group-hover:scale-105"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-16 left-1/2 -translate-x-1/2 w-[90%] h-32 rounded-full bg-[radial-gradient(ellipse_at_bottom,_var(--magenta-200)_0%,_var(--magenta-400)_40%,_transparent_75%)] blur-xl opacity-0 transition-all duration-500 ease-out group-hover:opacity-50 group-hover:scale-105"
+              />
 
-            <div className="relative z-10 flex items-start justify-between gap-4">
-              <h3 className="text-title-xs text-[var(--magenta-50)] max-w-lg">
-                Next Session on July 25, 9:00 PM
-              </h3>
-              <CalendarCheck size={28} className="text-[var(--magenta-200)] opacity-75 shrink-0 mt-1" weight="light" />
+              <div className="relative z-10">
+                <h3 className="text-title-xs text-[var(--magenta-50)]">
+                  Next Session on July 25, 9:00 PM
+                </h3>
+              </div>
+
+              <div className="relative z-10 mt-auto pt-6">
+                <Link
+                  href="https://gforms.app/r/UN9N9Fp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-full bg-[var(--magenta-100)] px-5 py-2.5 text-body-sm font-bold text-[var(--purple-900)] transition-all duration-200 hover:bg-white hover:scale-[1.02]"
+                >
+                  Register for a session
+                </Link>
+              </div>
             </div>
 
-            <div className="relative z-10 mt-auto pt-6">
-              <Link
-                href="/get-involved"
-                className="inline-flex items-center rounded-full bg-[var(--magenta-100)] px-5 py-2.5 text-body-sm font-bold text-[var(--purple-900)] transition-all duration-200 hover:bg-white hover:scale-[1.02]"
-              >
-                Register for a session
-              </Link>
+            {/* Box 2: Donate Box - No Fill, No Stroke, No rounded edges, No icon (Right Half) */}
+            <div className="relative overflow-hidden rounded-none px-2 py-6 md:px-4 md:py-8 min-h-[160px] md:min-h-[180px] flex flex-col justify-between">
+              <div className="relative z-10">
+                <h3 className="text-title-xs text-text-brand leading-snug max-w-lg">
+                  Every dollar counts. Contribute now to help us reach our goal.
+                </h3>
+              </div>
+
+              <div className="relative z-10 mt-auto pt-6">
+                <a
+                  href="https://www.zeffy.com/en-US/donation-form/donate-to-make-a-difference-for-hurt-2-heal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[16px] !font-bold text-text-brand underline underline-offset-4 hover:opacity-80 transition-opacity"
+                >
+                  Donate Now
+                </a>
+              </div>
             </div>
           </div>
 
@@ -197,8 +219,8 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col items-center justify-between gap-4 text-body-xs text-text-inverse/60 sm:flex-row md:mt-8">
-          <div className="flex items-center gap-6">
+        <div className="mt-6 grid grid-cols-1 items-center gap-4 text-body-xs text-text-inverse/60 sm:grid-cols-3 md:mt-8">
+          <div className="flex items-center gap-6 justify-center sm:justify-start">
             <Link
               href="/privacy-policy"
               className="hover:text-text-inverse hover:underline transition-colors"
@@ -212,15 +234,15 @@ export function SiteFooter() {
               Terms of Use
             </Link>
           </div>
+          <p className="text-center">
+            © 2026 Hurt 2 Heal. All rights reserved.
+          </p>
           <p className="text-center sm:text-right">
             Hurt 2 Heal is a registered 501(c)(3) non-profit organization.
           </p>
         </div>
       </div>
 
-      <p className="sr-only">
-        © {new Date().getFullYear()} Hurt 2 Heal. All rights reserved.
-      </p>
     </footer>
   );
 }

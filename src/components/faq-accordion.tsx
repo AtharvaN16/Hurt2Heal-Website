@@ -89,7 +89,9 @@ export function FAQAccordion({
                     </p>
                     {faq.question.includes("How do I register for an upcoming workshop") && (
                       <Link
-                        href="/get-involved"
+                        href="https://gforms.app/r/UN9N9Fp"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center justify-center rounded-full bg-surface-cta px-5 py-2 text-body-sm text-text-inverse font-bold hover:opacity-90 transition-opacity mt-4"
                       >
                         Register

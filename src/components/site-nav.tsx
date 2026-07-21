@@ -449,7 +449,9 @@ export function SiteNav() {
             )}
           </ul>
           <Link
-            href="/get-involved"
+            href="https://gforms.app/r/UN9N9Fp"
+            target="_blank"
+            rel="noopener noreferrer"
             className="justify-self-end rounded-full bg-surface-cta px-5 py-2.5 text-body-sm text-text-inverse font-bold"
           >
             Register for a Session
