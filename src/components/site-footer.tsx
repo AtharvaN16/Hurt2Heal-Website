@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react/dist/ssr";
+import { FacebookLogo, InstagramLogo, CalendarCheck } from "@phosphor-icons/react/dist/ssr";
+import { NewsletterForm } from "@/components/newsletter-form";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -56,13 +57,13 @@ const hotlines: Hotline[] = [
   },
   {
     name: "DeKalb Community Service Board, Crisis Access Line",
-    numbers: [{ label: "(404) 892-4646", href: "tel:4048924646" }],
+    numbers: [{ label: "1-404-892-4646", href: "tel:14048924646" }],
   },
   {
     name: "Fulton County Department of Mental Health, Emergency Mental Health Services",
     numbers: [
-      { label: "(404) 730-1600", href: "tel:4047301600" },
-      { label: "(404) 730-1608", href: "tel:4047301608" },
+      { label: "1-404-730-1600", href: "tel:14047301600" },
+      { label: "1-404-730-1608", href: "tel:14047301608" },
     ],
   },
 ];
@@ -70,81 +71,47 @@ const hotlines: Hotline[] = [
 export function SiteFooter() {
   return (
     <footer className="w-full bg-gradient-footer">
-      <div className="w-full px-6 pt-24 pb-10 md:px-12 md:pt-32 lg:px-16">
-        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-          <div>
-            <h2 className="text-title-sm text-text-brand">Keep in touch</h2>
-            <p className="text-body-lg text-text-secondary mt-4 max-w-sm">
-              Subscribe to our newsletter to stay up to date with our latest
-              news and events.
-            </p>
-          </div>
+      <div className="w-full px-6 pt-16 pb-6 md:px-12 md:pt-12 md:pb-8 lg:px-16">
+        <NewsletterForm />
 
-          <form className="grid grid-cols-1 gap-6 sm:grid-cols-[1fr_auto] sm:items-end">
-            <div className="grid gap-6 sm:grid-cols-2 sm:col-span-2">
-              <label className="text-heading-xxs text-text-primary">
-                First Name
-                <input
-                  type="text"
-                  name="firstName"
-                  autoComplete="given-name"
-                  className="mt-2 block w-full border-b border-text-primary/30 bg-transparent pb-2 text-body-md text-text-primary outline-none focus:border-text-brand"
-                />
-              </label>
-              <label className="text-heading-xxs text-text-primary">
-                Last Name
-                <input
-                  type="text"
-                  name="lastName"
-                  autoComplete="family-name"
-                  className="mt-2 block w-full border-b border-text-primary/30 bg-transparent pb-2 text-body-md text-text-primary outline-none focus:border-text-brand"
-                />
-              </label>
+        <div className="bg-grain relative mt-40 rounded-xl bg-[var(--color-bg-base)] p-6 md:mt-64 md:px-[54px] md:py-16">
+          <div className="group bg-grain relative overflow-hidden rounded-xl bg-[var(--purple-900)] px-8 py-6 md:px-12 md:py-7 min-h-[160px] md:min-h-[180px] flex flex-col justify-between">
+            {/* Silna Health-inspired bottom glow (subtle hover) */}
+            {/* Wide atmospheric glow layer */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-24 left-1/2 -translate-x-1/2 w-[130%] h-60 rounded-full bg-[radial-gradient(ellipse_at_bottom,_var(--magenta-400)_0%,_var(--purple-500)_40%,_var(--purple-800)_70%,_transparent_90%)] blur-2xl opacity-0 transition-all duration-500 ease-out group-hover:opacity-55 group-hover:scale-105"
+            />
+            {/* Soft core light emission layer */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-16 left-1/2 -translate-x-1/2 w-[90%] h-32 rounded-full bg-[radial-gradient(ellipse_at_bottom,_var(--magenta-200)_0%,_var(--magenta-400)_40%,_transparent_75%)] blur-xl opacity-0 transition-all duration-500 ease-out group-hover:opacity-50 group-hover:scale-105"
+            />
+
+            <div className="relative z-10 flex items-start justify-between gap-4">
+              <h3 className="text-title-xs text-[var(--magenta-50)] max-w-lg">
+                Next Session on July 25, 9:00 PM
+              </h3>
+              <CalendarCheck size={28} className="text-[var(--magenta-200)] opacity-75 shrink-0 mt-1" weight="light" />
             </div>
-            <label className="text-heading-xxs text-text-primary sm:col-span-1">
-              Email
-              <input
-                type="email"
-                name="email"
-                autoComplete="email"
-                className="mt-2 block w-full border-b border-text-primary/30 bg-transparent pb-2 text-body-md text-text-primary outline-none focus:border-text-brand"
-              />
-            </label>
-            <div className="sm:col-start-2 sm:row-start-1 sm:justify-self-end">
-              <button
-                type="submit"
-                className="rounded-full bg-surface-cta px-6 py-2.5 text-body-sm font-bold text-text-inverse"
+
+            <div className="relative z-10 mt-auto pt-6">
+              <Link
+                href="/get-involved"
+                className="inline-flex items-center rounded-full bg-[var(--magenta-100)] px-5 py-2.5 text-body-sm font-bold text-[var(--purple-900)] transition-all duration-200 hover:bg-white hover:scale-[1.02]"
               >
-                Submit
-              </button>
+                Register for a session
+              </Link>
             </div>
-            <p className="text-body-xs text-text-tertiary italic sm:col-span-2">
-              We respect your privacy and will never share your information.
-              You can unsubscribe anytime.
-            </p>
-          </form>
-        </div>
-
-        <div className="bg-grain relative mt-16 rounded-xl bg-[var(--color-bg-base)] p-6 md:mt-24 md:px-[54px] md:py-[68px]">
-          <div className="bg-grain relative overflow-hidden bg-[var(--purple-900)] px-8 py-10 md:px-12 md:py-12">
-            <h3 className="text-title-xs text-[var(--magenta-50)] max-w-lg">
-              Next Session on July 25, 9:00 PM
-            </h3>
-            <Link
-              href="/get-involved"
-              className="mt-6 inline-flex items-center rounded-full bg-[var(--magenta-100)] px-5 py-2.5 text-body-sm font-bold text-[var(--purple-900)]"
-            >
-              Register for a session
-            </Link>
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-10 md:mt-[53px] md:grid-cols-[1.25fr_1.2fr] md:gap-8">
             <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-[0.85fr_1.3fr_0.7fr] md:gap-x-[40px] md:px-[40px] md:py-[54px]">
               <div>
-                <h4 className="text-footer-label text-text-brand">
+                <h4 className="text-footer-label text-text-brand mb-4 md:mb-8">
                   Navigation
                 </h4>
-                <ul className="mt-4 space-y-3 text-body-md text-text-primary">
+                <ul className="space-y-[18px] text-body-md text-text-primary">
                   {navLinks.map((link) => (
                     <li key={link.href}>
                       <Link href={link.href} className="hover:underline">
@@ -156,10 +123,10 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <h4 className="text-footer-label text-text-brand">
+                <h4 className="text-footer-label text-text-brand mb-4 md:mb-8">
                   Get Involved
                 </h4>
-                <ul className="mt-4 space-y-3 text-body-md text-text-primary">
+                <ul className="space-y-[18px] text-body-md text-text-primary">
                   {getInvolvedLinks.map((link) => (
                     <li key={link.href}>
                       <Link
@@ -177,8 +144,8 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <h4 className="text-footer-label text-text-brand">Socials</h4>
-                <div className="mt-4 flex gap-3">
+                <h4 className="text-footer-label text-text-brand mb-4 md:mb-8">Socials</h4>
+                <div className="flex gap-3">
                   {socials.map((social) => (
                     <a
                       key={social.label}
@@ -196,20 +163,20 @@ export function SiteFooter() {
             </div>
 
             <div className="md:px-[40px] md:py-[54px]">
-              <h4 className="text-[20px] font-bold text-text-brand">
+              <h4 className="text-[20px] font-bold text-text-brand mb-[18px]">
                 Crisis Support (24/7)
               </h4>
-              <p className="text-[16px] text-text-secondary mt-4">
+              <p className="text-[16px] text-text-secondary mb-7">
                 Hurt 2 Heal is not a crisis center. If you are in immediate
                 danger, please call 911 or contact crisis hotlines:
               </p>
-              <ul className="mt-4 space-y-3">
+              <ul className="space-y-[18px]">
                 {hotlines.map((hotline) => (
                   <li
                     key={hotline.name}
                     className="flex items-start justify-between gap-6"
                   >
-                    <p className="max-w-[280px] text-[16px] font-bold text-text-primary">
+                    <p className="max-w-[320px] text-[16px] font-bold text-text-primary">
                       {hotline.name}
                     </p>
                     <div className="flex flex-wrap justify-end gap-x-3 gap-y-0.5 text-[16px]">
@@ -228,6 +195,26 @@ export function SiteFooter() {
               </ul>
             </div>
           </div>
+        </div>
+
+        <div className="mt-6 flex flex-col items-center justify-between gap-4 text-body-xs text-text-inverse/60 sm:flex-row md:mt-8">
+          <div className="flex items-center gap-6">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-text-inverse hover:underline transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-use"
+              className="hover:text-text-inverse hover:underline transition-colors"
+            >
+              Terms of Use
+            </Link>
+          </div>
+          <p className="text-center sm:text-right">
+            Hurt 2 Heal is a registered 501(c)(3) non-profit organization.
+          </p>
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { getAboutContent } from "@/lib/content";
 
@@ -6,7 +7,12 @@ export default function AboutPage() {
 
   return (
     <PageShell>
-      <h1 className="text-3xl font-semibold tracking-tight">
+      <nav className="text-center text-body-md text-text-secondary pt-4 mb-8">
+        <Link href="/" className="hover:underline">Home</Link>
+        <span className="mx-2">/</span>
+        <span className="text-text-primary font-semibold">About</span>
+      </nav>
+      <h1 className="text-3xl font-semibold tracking-tight mt-4">
         {content.welcomeTitle}
       </h1>
       <div className="mt-6 space-y-4 text-lg text-text-secondary">

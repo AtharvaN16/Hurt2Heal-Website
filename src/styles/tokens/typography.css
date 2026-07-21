@@ -194,6 +194,100 @@
   }
 }
 
+/* Serif Heading (Lora, regular 400 — Display's typeface/weight, paired
+   with Heading's size ramp) */
+
+.text-serif-heading-xxl {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2.25rem; /* 36px mobile */
+  line-height: 1.25;
+  letter-spacing: var(--tracking-normal);
+}
+@media (min-width: 768px) {
+  .text-serif-heading-xxl {
+    font-size: 3rem; /* 48px desktop */
+  }
+}
+
+.text-serif-heading-xl {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2rem; /* 32px mobile */
+  line-height: 1.25;
+  letter-spacing: var(--tracking-normal);
+}
+@media (min-width: 768px) {
+  .text-serif-heading-xl {
+    font-size: 2.5rem; /* 40px desktop */
+  }
+}
+
+.text-serif-heading-lg {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem; /* 28px mobile */
+  line-height: 1.25;
+  letter-spacing: var(--tracking-normal);
+}
+@media (min-width: 768px) {
+  .text-serif-heading-lg {
+    font-size: 2rem; /* 32px desktop */
+  }
+}
+
+.text-serif-heading-md {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.5rem; /* 24px mobile */
+  line-height: 1.5;
+  letter-spacing: var(--tracking-normal);
+}
+@media (min-width: 768px) {
+  .text-serif-heading-md {
+    font-size: 1.75rem; /* 28px desktop */
+  }
+}
+
+.text-serif-heading-sm {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.25rem; /* 20px mobile */
+  line-height: 1.5;
+  letter-spacing: var(--tracking-normal);
+}
+@media (min-width: 768px) {
+  .text-serif-heading-sm {
+    font-size: 1.5rem; /* 24px desktop */
+  }
+}
+
+.text-serif-heading-xs {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.125rem; /* 18px mobile */
+  line-height: 1.5;
+  letter-spacing: var(--tracking-normal);
+}
+@media (min-width: 768px) {
+  .text-serif-heading-xs {
+    font-size: 1.25rem; /* 20px desktop */
+  }
+}
+
+.text-serif-heading-xxs {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 0.9375rem; /* 15px mobile */
+  line-height: 1.5;
+  letter-spacing: var(--tracking-wide);
+}
+@media (min-width: 768px) {
+  .text-serif-heading-xxs {
+    font-size: 1rem; /* 16px desktop */
+  }
+}
+
 /* Subheading (Lato Medium, self-hosted, 500) */
 
 .text-subheading-xxl {

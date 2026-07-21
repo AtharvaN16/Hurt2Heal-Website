@@ -10,6 +10,9 @@ import {
   ChatText,
   ChatCircleDots,
   Globe,
+  HandHeart,
+  Handshake,
+  ShareNetwork,
 } from "@phosphor-icons/react/dist/ssr";
 import { TextAnimate } from "@/components/text-animate";
 import { RotatingText } from "@/components/rotating-text";
@@ -21,6 +24,11 @@ const links = [
   { label: "Contact", href: "/contact" },
   { label: "About", href: "/about" },
 ];
+
+const SHARE_DATA = {
+  title: "Hurt 2 Heal",
+  text: "A safe, peer-led digital sanctuary for trauma-informed education, support, and community healing.",
+};
 
 type Hotline = {
   name: string;
@@ -83,7 +91,83 @@ const BUTTONS_DELAY = 0.9;
 export function SiteNav() {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
+  const [isGetInvolvedOpen, setIsGetInvolvedOpen] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
   const lastScrollY = useRef(0);
+  const getInvolvedRef = useRef<HTMLLIElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const getInvolvedItems = [
+    {
+      label: "Donate",
+      description:
+        "Every dollar counts. Contribute now to help us reach our goal.",
+      icon: HandHeart,
+      href: "https://www.zeffy.com/en-US/donation-form/donate-to-make-a-difference-for-hurt-2-heal",
+      external: true,
+    },
+    {
+      label: "Volunteer",
+      description: "Your time and skills can make an impact too.",
+      icon: Handshake,
+      href: "https://www.idealist.org/en/nonprofit/22ea980b0d044873bc551ce5532e1bf5-hurt-2-heal-inc-kennesaw",
+      external: true,
+    },
+    {
+      label: "Share",
+      description: shareCopied
+        ? "Link copied!"
+        : "Share our campaign with your friends, family, and on social media. Your advocacy can amplify our impact.",
+      icon: ShareNetwork,
+    },
+  ];
+
+  async function handleShare() {
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ ...SHARE_DATA, url: window.location.origin });
+      } catch {
+        // user cancelled the share sheet — no-op
+      }
+      return;
+    }
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(window.location.origin);
+        setShareCopied(true);
+        setTimeout(() => setShareCopied(false), 2000);
+      } catch {
+        // clipboard unavailable — no-op
+      }
+    }
+  }
+
+  function handleGetInvolvedPointerMove(event: React.MouseEvent<HTMLDivElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    glowRef.current?.style.setProperty("--glow-x", `${event.clientX - rect.left}px`);
+    glowRef.current?.style.setProperty("--glow-y", `${event.clientY - rect.top}px`);
+  }
+
+  useEffect(() => {
+    if (!isGetInvolvedOpen) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        getInvolvedRef.current &&
+        !getInvolvedRef.current.contains(event.target as Node)
+      ) {
+        setIsGetInvolvedOpen(false);
+      }
+    }
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setIsGetInvolvedOpen(false);
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isGetInvolvedOpen]);
 
   useEffect(() => {
     function handleScroll() {
@@ -257,13 +341,112 @@ export function SiteNav() {
             />
           </Link>
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-body-md">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="hover:underline font-semibold">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {links.map((link) =>
+              link.label === "Get Involved" ? (
+                <li key={link.href} className="relative" ref={getInvolvedRef}>
+                  <button
+                    type="button"
+                    onClick={() => setIsGetInvolvedOpen((open) => !open)}
+                    aria-expanded={isGetInvolvedOpen}
+                    className="flex items-center gap-1 font-semibold hover:underline"
+                  >
+                    {link.label}
+                    <CaretDown
+                      size={12}
+                      weight="bold"
+                      className={`transition-transform ${
+                        isGetInvolvedOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {isGetInvolvedOpen && (
+                      <motion.div
+                        onMouseMove={handleGetInvolvedPointerMove}
+                        initial={{ opacity: 0, y: -8, filter: "blur(8px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: -8, filter: "blur(8px)" }}
+                        transition={{ duration: 0.3, ease: EASE }}
+                        className="group absolute left-0 top-full z-20 mt-8 w-[36rem] overflow-hidden bg-white backdrop-blur-[200px]"
+                      >
+                        <div
+                          ref={glowRef}
+                          aria-hidden="true"
+                          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                          style={{
+                            background:
+                              "radial-gradient(350px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(230,96,217,0.08), transparent 70%)",
+                          }}
+                        />
+                        <div className="relative flex flex-col gap-1 px-8 py-6">
+                          {getInvolvedItems.map((item, index) => {
+                            const content = (
+                              <>
+                                <span className="flex h-14 w-14 shrink-0 items-center justify-center text-text-brand">
+                                  <item.icon size={40} weight="duotone" />
+                                </span>
+                                <span className="flex flex-col">
+                                  <span className="text-heading-xs text-text-primary transition-colors group-hover/row:text-text-brand">
+                                    {item.label}
+                                  </span>
+                                  <span className="text-body-md text-text-tertiary">
+                                    {item.description}
+                                  </span>
+                                </span>
+                              </>
+                            );
+                            return (
+                              <motion.div
+                                key={item.label}
+                                initial={{ opacity: 0, filter: "blur(12px)" }}
+                                animate={{ opacity: 1, filter: "blur(0px)" }}
+                                transition={{
+                                  delay: 0.1 + index * 0.08,
+                                  duration: 0.6,
+                                }}
+                              >
+                                {item.href ? (
+                                  <a
+                                    href={item.href}
+                                    target={item.external ? "_blank" : undefined}
+                                    rel={
+                                      item.external
+                                        ? "noopener noreferrer"
+                                        : undefined
+                                    }
+                                    onClick={() => setIsGetInvolvedOpen(false)}
+                                    className="group/row flex items-start gap-7 rounded-xl px-5 py-4"
+                                  >
+                                    {content}
+                                  </a>
+                                ) : (
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      handleShare();
+                                      setIsGetInvolvedOpen(false);
+                                    }}
+                                    className="group/row flex w-full items-start gap-7 rounded-xl px-5 py-4 text-left"
+                                  >
+                                    {content}
+                                  </button>
+                                )}
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </li>
+              ) : (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:underline font-semibold">
+                    {link.label}
+                  </Link>
+                </li>
+              ),
+            )}
           </ul>
           <Link
             href="/get-involved"

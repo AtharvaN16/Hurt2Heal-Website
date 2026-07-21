@@ -8,7 +8,12 @@ export type Promise = { label: string; text: string };
 
 export type FAQ = { question: string; answer: string };
 
-export type Testimonial = { quote: string };
+export type Testimonial = {
+  quote: string;
+  quoteBefore?: string;
+  highlight: string;
+  quoteAfter?: string;
+};
 
 export type FeaturedInLogo = {
   name: string;
@@ -81,22 +86,49 @@ export function getHomeContent(): HomeContent {
       {
         quote:
           "I have had many opportunities to interact with Joyce, during book promotions and events in support of her great cause. Joyce is always willing to lend a helping hand. She has exhibited tremendous drive and a dedication to excellence through the work Hurt 2 Heal is doing. Joyce is a fighter...and has also shown me that she is willing to make the commitment to this world that we need for it to be a better place.",
+        quoteBefore:
+          "I have had many opportunities to interact with Joyce, during book promotions and events in support of her great cause. Joyce is always willing to lend a helping hand. ",
+        highlight:
+          "She has exhibited tremendous drive and a dedication to excellence through the work Hurt 2 Heal is doing.",
+        quoteAfter:
+          " Joyce is a fighter...and has also shown me that she is willing to make the commitment to this world that we need for it to be a better place.",
       },
       {
         quote:
           "Selecting Ms. Joyce Reed to share her testimony was one of the best decisions we could have made. Ms. Joyce spoke in great detail of her trivial journey, from rape to attempted suicide. Tears filled the eyes of everyone listening, for we either related to a component of her story or empathized with her. What touched me the most was that Ms. Joyce not only went through all of this, but she overcame all of it triumphantly. That inspires me tremendously. There was hope and transformation in her story, and that is beautiful to me.",
+        quoteBefore:
+          "Selecting Ms. Joyce Reed to share her testimony was one of the best decisions we could have made. Ms. Joyce spoke in great detail of her trivial journey, from rape to attempted suicide. Tears filled the eyes of everyone listening, for we either related to a component of her story or empathized with her. What touched me the most was that Ms. Joyce not only went through all of this, but she overcame all of it triumphantly. That inspires me tremendously. ",
+        highlight:
+          "There was hope and transformation in her story, and that is beautiful to me.",
+        quoteAfter: "",
       },
       {
         quote:
           "Valdosta State University had the pleasure of having Joyce speak at the first annual Women's Empowerment Conference. She changed lives and left a lasting impression. Selecting Joyce to share her testimony was one of the best decisions we could have made. She inspires tremendously.",
+        quoteBefore:
+          "Valdosta State University had the pleasure of having Joyce speak at the first annual Women's Empowerment Conference. ",
+        highlight: "She changed lives and left a lasting impression.",
+        quoteAfter:
+          " Selecting Joyce to share her testimony was one of the best decisions we could have made. She inspires tremendously.",
       },
       {
         quote:
           "I believe strongly in her ability to do this work because she approaches it with empathy, resilience, and a genuine understanding of what survivors face. Her experiences have not discouraged her; instead, they have strengthened her compassion and deepened her commitment to helping others. She has taken the time to grow, reflect, and develop a plan to make a meaningful impact. Supporting survivors is essential, as it provides safety, validation, and the opportunity to heal. Those who have experienced trauma need advocates who not only understand their struggles, but who are also willing to stand beside them with patience and care. Joyce embodies these qualities and is dedicated to creating a supportive and empowering environment for those in need.",
+        quoteBefore: "I believe strongly in her ability to do this work because ",
+        highlight:
+          "she approaches it with empathy, resilience, and a genuine understanding of what survivors face.",
+        quoteAfter:
+          " Her experiences have not discouraged her; instead, they have strengthened her compassion and deepened her commitment to helping others. She has taken the time to grow, reflect, and develop a plan to make a meaningful impact. Supporting survivors is essential, as it provides safety, validation, and the opportunity to heal. Those who have experienced trauma need advocates who not only understand their struggles, but who are also willing to stand beside them with patience and care. Joyce embodies these qualities and is dedicated to creating a supportive and empowering environment for those in need.",
       },
       {
         quote:
           "I had the opportunity to hear Joyce, speak at a local Take Back the Night event and was absolutely moved by her words, as was the rest of the audience. Joyce talked about the multiple assaults that had occurred over her youth and how the trauma affected her life as an adult. While some of it was difficult to listen to, Joyce also showed how strong and resilient a survivor can be. She shared with us the story of her healing and the challenges she still faces. Joyce clearly believes that there can be life after victimization and is passionate about empowering other survivors. I believe that everyone who was present left with a sense of hope for survivors and with a desire to be part of the solution to end sexual violence in our communities.",
+        quoteBefore:
+          "I had the opportunity to hear Joyce, speak at a local Take Back the Night event and was absolutely moved by her words, as was the rest of the audience. Joyce talked about the multiple assaults that had occurred over her youth and how the trauma affected her life as an adult. While some of it was difficult to listen to, Joyce also showed how strong and resilient a survivor can be. She shared with us the story of her healing and the challenges she still faces. ",
+        highlight:
+          "Joyce clearly believes that there can be life after victimization and is passionate about empowering other survivors.",
+        quoteAfter:
+          " I believe that everyone who was present left with a sense of hope for survivors and with a desire to be part of the solution to end sexual violence in our communities.",
       },
     ],
     faqs: [

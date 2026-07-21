@@ -35,13 +35,15 @@ export function FAQAccordion({
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className={`flex w-full items-center justify-between gap-6 text-left transition-colors duration-200 ${
+              className={`group flex w-full items-center justify-between gap-6 text-left transition-colors duration-200 ${
                 isCompact ? "py-4" : "py-6"
               }`}
             >
               <span
-                className={`text-text-primary ${
-                  isCompact ? "text-subheading-sm font-medium" : "text-subheading-md"
+                className={`transition-colors duration-200 group-hover:text-text-brand ${
+                  isOpen ? "text-text-brand" : "text-text-primary"
+                } ${
+                  isCompact ? "text-subheading-sm font-medium" : "text-serif-heading-sm"
                 }`}
               >
                 {faq.question}
