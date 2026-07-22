@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { TextAnimate } from "@/components/text-animate";
@@ -51,17 +51,23 @@ export default function Home() {
   const progressRef = useRef(0);
   const [showSubheading, setShowSubheading] = useState(false);
   const subheadingAnimDoneRef = useRef(false);
-  const [heroIntroInstant, setHeroIntroInstant] = useState(false);
+  // Framer Motion only reads `initial` on a component's first mount, so
+  // this has to be known *before* that first render — a lazy useState
+  // initializer runs synchronously during render (unlike an effect, which
+  // would fire too late to affect the already-mounted animation). The
+  // read here is pure (no writes), so it stays safe under React Strict
+  // Mode's double-invocation of initializers.
+  const [heroIntroInstant] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      sessionStorage.getItem(HERO_INTRO_SESSION_KEY) === "1",
+  );
 
-  // Runs before paint: if the intro already played earlier this session,
-  // skip straight to the visible state so it never flashes through the
-  // entrance animation again; otherwise mark it played for next time.
-  useLayoutEffect(() => {
-    if (sessionStorage.getItem(HERO_INTRO_SESSION_KEY) === "1") {
-      setHeroIntroInstant(true);
-    } else {
-      sessionStorage.setItem(HERO_INTRO_SESSION_KEY, "1");
-    }
+  // Marks the intro as played for the rest of this browser session. A
+  // regular effect (not the lazy initializer above) since writing here is
+  // a side effect and effects are where those belong.
+  useEffect(() => {
+    sessionStorage.setItem(HERO_INTRO_SESSION_KEY, "1");
   }, []);
 
   // Matches the word-stagger timing TextAnimate uses below, so the wheel
@@ -82,32 +88,67 @@ export default function Home() {
   }, [showSubheading, subheadline]);
 
   useEffect(() => {
-    function handleWheel(event: WheelEvent) {
+    // Shared by both wheel and touch input: advances progress by deltaY
+    // (positive = scrolling/swiping down) and reports whether the
+    // gesture should be captured (and thus preventDefault-ed) instead of
+    // falling through to normal page scroll.
+    function applyProgressDelta(deltaY: number) {
       const atTop = window.scrollY <= 0;
       const holdingForSubheading =
         progressRef.current >= 1 && !subheadingAnimDoneRef.current;
       const locked =
         progressRef.current < 1 ||
         holdingForSubheading ||
-        (atTop && event.deltaY < 0);
-      if (!locked) return;
-
-      event.preventDefault();
-      if (holdingForSubheading) return;
+        (atTop && deltaY < 0);
+      if (!locked) return false;
+      if (holdingForSubheading) return true;
 
       const next = Math.min(
         1,
-        Math.max(
-          0,
-          progressRef.current + event.deltaY * PROGRESS_PER_WHEEL_UNIT,
-        ),
+        Math.max(0, progressRef.current + deltaY * PROGRESS_PER_WHEEL_UNIT),
       );
       progressRef.current = next;
       setProgress(next);
       setShowSubheading(next >= SUBHEADING_THRESHOLD);
+      return true;
     }
+
+    function handleWheel(event: WheelEvent) {
+      if (applyProgressDelta(event.deltaY)) event.preventDefault();
+    }
+
+    // Touch devices don't fire wheel events, so the gesture is tracked
+    // manually: deltaY is the finger's movement since the last touchmove
+    // (finger moving up == scrolling/swiping down == positive deltaY),
+    // mirroring the sign convention of WheelEvent.deltaY above.
+    let lastTouchY: number | null = null;
+
+    function handleTouchStart(event: TouchEvent) {
+      lastTouchY = event.touches[0]?.clientY ?? null;
+    }
+
+    function handleTouchMove(event: TouchEvent) {
+      if (lastTouchY === null) return;
+      const currentY = event.touches[0]?.clientY ?? lastTouchY;
+      const deltaY = lastTouchY - currentY;
+      lastTouchY = currentY;
+      if (applyProgressDelta(deltaY)) event.preventDefault();
+    }
+
+    function handleTouchEnd() {
+      lastTouchY = null;
+    }
+
     window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
   }, []);
 
   const heroFade = Math.min(1, progress / HERO_FADE_END);
