@@ -152,19 +152,24 @@ export function ContactForm() {
     return () => clearTimeout(timeoutId);
   }, [stage]);
 
-  const transitionDuration = prefersReducedMotion ? 0.15 : 0.4;
-  const slideDistance = prefersReducedMotion ? 0 : 16;
+  const transitionDuration = prefersReducedMotion ? 0.15 : 0.6;
+  const blurFilter = prefersReducedMotion ? "blur(0px)" : "blur(12px)";
 
   return (
-    <div className="mx-auto w-full max-w-3xl">
+    <motion.div
+      initial={{ opacity: 0, filter: blurFilter }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
+      transition={{ duration: 0.8, ease: EASE }}
+      className="mx-auto w-full max-w-3xl"
+    >
       <div className="bg-grain relative overflow-hidden rounded-none border-none bg-white px-8 py-12 md:px-14 md:py-16 shadow-none min-h-[680px] md:min-h-[750px] flex flex-col justify-center">
         <AnimatePresence mode="wait">
           {stage === "done" ? (
             <motion.div
               key="success"
-              initial={{ opacity: 0, y: slideDistance }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -slideDistance }}
+              initial={{ opacity: 0, filter: blurFilter }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: blurFilter }}
               transition={{ duration: transitionDuration, ease: EASE }}
               className="py-12 flex-1 flex flex-col items-center justify-center min-h-[550px] md:min-h-[620px]"
             >
@@ -173,9 +178,9 @@ export function ContactForm() {
           ) : (
             <motion.div
               key="form"
-              initial={{ opacity: 0, y: slideDistance }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -slideDistance }}
+              initial={{ opacity: 0, filter: blurFilter }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: blurFilter }}
               transition={{ duration: transitionDuration, ease: EASE }}
             >
               <form onSubmit={handleSubmit} noValidate>
@@ -290,6 +295,6 @@ export function ContactForm() {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 }

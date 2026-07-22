@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { PageShell } from "@/components/page-shell";
 import { ProgramAccordionCard } from "@/components/program-accordion-card";
+
+const EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function ProgramsPage() {
   return (
@@ -15,10 +20,15 @@ export default function ProgramsPage() {
         Our Upcoming events
       </h1>
 
-      {/* Interactive Accordion Program Card */}
-      <div className="pb-64 md:pb-[360px]">
+      {/* Interactive Accordion Program Card with blurIn entry animation */}
+      <motion.div
+        initial={{ opacity: 0, filter: "blur(12px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+        className="pb-64 md:pb-[360px]"
+      >
         <ProgramAccordionCard />
-      </div>
+      </motion.div>
     </PageShell>
   );
 }
