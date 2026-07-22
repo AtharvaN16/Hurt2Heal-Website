@@ -15,6 +15,9 @@ interface TextAnimateProps {
   duration?: number;
   stagger?: number;
   className?: string;
+  /** Skip the entrance animation and render already in the visible state
+   * (e.g. for a one-time intro that shouldn't replay on remount). */
+  instant?: boolean;
 }
 
 const animations: Record<AnimationType, { hidden: TargetAndTransition; visible: TargetAndTransition }> = {
@@ -45,6 +48,7 @@ export function TextAnimate({
   duration = 0.6,
   stagger = 0.06,
   className,
+  instant = false,
   ...props
 }: TextAnimateProps) {
   const { hidden, visible } = animations[animation];
@@ -53,7 +57,7 @@ export function TextAnimate({
   if (mode === "block") {
     return (
       <MotionComponent
-        initial={hidden}
+        initial={instant ? false : hidden}
         animate={visible}
         transition={{ duration, delay, ...transition }}
         className={className}
@@ -72,7 +76,7 @@ export function TextAnimate({
       {words.map((word, i) => (
         <motion.span
           key={i}
-          initial={hidden}
+          initial={instant ? false : hidden}
           animate={visible}
           transition={{ duration, delay: delay + i * stagger, ...transition }}
           style={{ display: "inline-block", marginRight: i < words.length - 1 ? "0.25em" : 0 }}

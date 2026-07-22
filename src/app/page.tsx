@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { TextAnimate } from "@/components/text-animate";
@@ -25,6 +25,11 @@ const PROGRESS_PER_WHEEL_UNIT = 0.0015;
 const SUBHEADING_STAGGER = 0.08;
 const SUBHEADING_WORD_DURATION = 0.6;
 
+// The hero headline's word-reveal should only ever play once per browser
+// session — not every time it's scrolled back into view or the visitor
+// navigates back to "/" from another page within the same session.
+const HERO_INTRO_SESSION_KEY = "h2h-hero-intro-played";
+
 export default function Home() {
   const {
     headline,
@@ -46,6 +51,18 @@ export default function Home() {
   const progressRef = useRef(0);
   const [showSubheading, setShowSubheading] = useState(false);
   const subheadingAnimDoneRef = useRef(false);
+  const [heroIntroInstant, setHeroIntroInstant] = useState(false);
+
+  // Runs before paint: if the intro already played earlier this session,
+  // skip straight to the visible state so it never flashes through the
+  // entrance animation again; otherwise mark it played for next time.
+  useLayoutEffect(() => {
+    if (sessionStorage.getItem(HERO_INTRO_SESSION_KEY) === "1") {
+      setHeroIntroInstant(true);
+    } else {
+      sessionStorage.setItem(HERO_INTRO_SESSION_KEY, "1");
+    }
+  }, []);
 
   // Matches the word-stagger timing TextAnimate uses below, so the wheel
   // lock holds at progress 1 until the subheadline has actually finished
@@ -100,21 +117,24 @@ export default function Home() {
     <>
       <main className="relative flex h-screen items-center justify-center overflow-hidden px-6">
         <div className="relative -mt-32 w-full max-w-2xl text-center">
-          {heroVisible && (
-            <motion.div
-              style={{ opacity: 1 - heroFade, filter: `blur(${heroFade * 12}px)` }}
+          <motion.div
+            style={{
+              opacity: 1 - heroFade,
+              filter: `blur(${heroFade * 12}px)`,
+              pointerEvents: heroVisible ? "auto" : "none",
+            }}
+          >
+            <TextAnimate
+              as="h1"
+              animation="blurIn"
+              mode="word"
+              stagger={0.08}
+              instant={heroIntroInstant}
+              className="text-display-sm text-text-primary"
             >
-              <TextAnimate
-                as="h1"
-                animation="blurIn"
-                mode="word"
-                stagger={0.08}
-                className="text-display-sm text-text-primary"
-              >
-                {headline}
-              </TextAnimate>
-            </motion.div>
-          )}
+              {headline}
+            </TextAnimate>
+          </motion.div>
           {showSubheading && (
             <div className="absolute inset-0 flex items-center justify-center">
               <TextAnimate
