@@ -10,6 +10,11 @@ export default function ContactPage() {
         <span className="mx-2">/</span>
         <span className="text-text-primary font-semibold">Contact</span>
       </nav>
+
+      <h1 className="text-title-md font-serif text-text-brand text-center mt-4 mb-10 md:mb-18">
+        Get in Touch
+      </h1>
+
       <ContactForm />
     </PageShell>
   );

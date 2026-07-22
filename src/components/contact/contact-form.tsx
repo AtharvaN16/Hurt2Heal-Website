@@ -18,7 +18,7 @@ type TextFieldName = "firstName" | "lastName" | "email" | "phone";
 type Stage = "idle" | "submitting" | "done";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
-const SUCCESS_DISPLAY_MS = 5000;
+const SUCCESS_DISPLAY_MS = 4000;
 
 const TEXT_FIELDS: {
   name: TextFieldName;
@@ -138,9 +138,7 @@ export function ContactForm() {
     setStage("done");
   }
 
-  // 5s after showing the success message, reset field state and go back
-  // to "idle" — AnimatePresence's exit/enter cycle below handles the
-  // visual crossfade back to a fresh empty form automatically.
+  // 4s after showing the success message, reset field state and go back to "idle"
   useEffect(() => {
     if (stage !== "done") return;
     const timeoutId = setTimeout(() => {
@@ -158,8 +156,8 @@ export function ContactForm() {
   const slideDistance = prefersReducedMotion ? 0 : 16;
 
   return (
-    <div className="mx-auto w-full max-w-2xl">
-      <div className="bg-grain relative overflow-hidden rounded-2xl bg-[var(--warm-0)] px-8 py-14 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.15)] md:px-14 md:py-18">
+    <div className="mx-auto w-full max-w-3xl">
+      <div className="bg-grain relative overflow-hidden rounded-none border-none bg-white px-8 py-12 md:px-14 md:py-16 shadow-none min-h-[680px] md:min-h-[750px] flex flex-col justify-center">
         <AnimatePresence mode="wait">
           {stage === "done" ? (
             <motion.div
@@ -168,6 +166,7 @@ export function ContactForm() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -slideDistance }}
               transition={{ duration: transitionDuration, ease: EASE }}
+              className="py-12 flex-1 flex flex-col items-center justify-center min-h-[550px] md:min-h-[620px]"
             >
               <SuccessMessage />
             </motion.div>
@@ -180,14 +179,14 @@ export function ContactForm() {
               transition={{ duration: transitionDuration, ease: EASE }}
             >
               <form onSubmit={handleSubmit} noValidate>
-                <fieldset disabled={!isInteractive} className="flex flex-col gap-6">
-                  <div className="grid gap-6 sm:grid-cols-2">
+                <fieldset disabled={!isInteractive} className="flex flex-col gap-10 md:gap-12">
+                  <div className="grid gap-8 sm:grid-cols-2">
                     {TEXT_FIELDS.map((field) => {
                       const error = errors[field.name];
                       return (
                         <label
                           key={field.name}
-                          className="text-heading-xxs text-text-primary"
+                          className="text-heading-xxs text-text-primary font-semibold"
                         >
                           {field.label}
                           <span aria-hidden="true" className="text-red-600">
@@ -274,13 +273,17 @@ export function ContactForm() {
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="flex items-center justify-center gap-2 self-start rounded-full bg-surface-cta px-6 py-3.5 text-body-lg font-bold text-text-inverse transition-transform duration-200 hover:scale-[1.02] disabled:opacity-60"
-                  >
-                    {stage === "idle" ? "Send Message" : "Sending…"}
-                    <CaretRight size={18} weight="bold" />
-                  </button>
+                  {/* Divider Line & Bottom Right Send Message Button */}
+                  <div className="pt-8 border-t border-black/10 flex justify-end">
+                    <button
+                      type="submit"
+                      disabled={!isInteractive}
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--purple-900)] px-8 py-3.5 text-body-md font-bold text-white transition-all duration-200 hover:bg-[var(--purple-800)] hover:scale-[1.02] shadow-xs disabled:opacity-60 cursor-pointer"
+                    >
+                      {stage === "idle" ? "Send Message" : "Sending…"}
+                      <CaretRight size={18} weight="bold" />
+                    </button>
+                  </div>
                 </fieldset>
               </form>
             </motion.div>

@@ -57,10 +57,10 @@ export function PillRadioGroup<T extends string>({
               />
               <label
                 htmlFor={id}
-                className={`inline-flex cursor-pointer items-center rounded-full border px-4 py-2 text-body-sm transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-text-brand peer-focus-visible:ring-offset-2 ${
+                className={`inline-flex cursor-pointer items-center rounded-full border px-4 py-2.5 text-body-sm transition-all peer-focus-visible:ring-2 peer-focus-visible:ring-text-brand peer-focus-visible:ring-offset-2 ${
                   checked
-                    ? "border-text-brand bg-text-brand text-text-inverse"
-                    : "border-text-primary/30 text-text-primary hover:border-text-brand"
+                    ? "border-transparent bg-[var(--magenta-100)] text-[var(--purple-900)] font-bold"
+                    : "border-black/20 text-text-primary font-medium bg-transparent hover:border-black/40"
                 }`}
               >
                 {option.label}

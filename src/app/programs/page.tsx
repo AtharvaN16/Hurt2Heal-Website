@@ -11,12 +11,12 @@ export default function ProgramsPage() {
         <span className="text-text-primary font-semibold">Programs &amp; Events</span>
       </nav>
 
-      <h1 className="text-title-md font-serif text-text-brand text-center mt-4 mb-20 md:mb-36">
+      <h1 className="text-title-md font-serif text-text-brand text-center mt-4 mb-10 md:mb-18">
         Our Upcoming events
       </h1>
 
       {/* Interactive Accordion Program Card */}
-      <div className="mt-8 pb-64 md:pb-[360px]">
+      <div className="pb-64 md:pb-[360px]">
         <ProgramAccordionCard />
       </div>
     </PageShell>
