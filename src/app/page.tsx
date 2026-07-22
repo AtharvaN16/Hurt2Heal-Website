@@ -47,21 +47,29 @@ export default function Home() {
     testimonials,
     faqs,
   } = getHomeContent();
-  const [progress, setProgress] = useState(0);
-  const progressRef = useRef(0);
-  const [showSubheading, setShowSubheading] = useState(false);
-  const subheadingAnimDoneRef = useRef(false);
-  // Framer Motion only reads `initial` on a component's first mount, so
-  // this has to be known *before* that first render — a lazy useState
-  // initializer runs synchronously during render (unlike an effect, which
-  // would fire too late to affect the already-mounted animation). The
+  // Framer Motion only reads `initial` on a component's first mount, and
+  // the scroll-jack's starting point needs to be right on that very first
+  // render too — so this has to be known *before* render, via a lazy
+  // useState initializer (unlike an effect, which fires too late to affect
+  // an already-mounted animation or an already-computed first paint). The
   // read here is pure (no writes), so it stays safe under React Strict
   // Mode's double-invocation of initializers.
-  const [heroIntroInstant] = useState(
+  const [hasSeenIntro] = useState(
     () =>
       typeof window !== "undefined" &&
       sessionStorage.getItem(HERO_INTRO_SESSION_KEY) === "1",
   );
+
+  // On a fresh first visit this session, start at the top of the
+  // scroll-jack with the headline about to animate in. On any later visit
+  // to "/" within the same session, skip straight past it: start already
+  // scrolled through (progress 1) with the subheadline showing and its
+  // entrance animation already considered finished, so the scroll lock
+  // releases immediately into normal page scroll.
+  const [progress, setProgress] = useState(() => (hasSeenIntro ? 1 : 0));
+  const progressRef = useRef(hasSeenIntro ? 1 : 0);
+  const [showSubheading, setShowSubheading] = useState(hasSeenIntro);
+  const subheadingAnimDoneRef = useRef(hasSeenIntro);
 
   // Marks the intro as played for the rest of this browser session. A
   // regular effect (not the lazy initializer above) since writing here is
@@ -170,7 +178,7 @@ export default function Home() {
               animation="blurIn"
               mode="word"
               stagger={0.08}
-              instant={heroIntroInstant}
+              instant={hasSeenIntro}
               className="text-display-sm text-text-primary"
             >
               {headline}
@@ -183,6 +191,7 @@ export default function Home() {
                 animation="blurIn"
                 mode="word"
                 stagger={0.08}
+                instant={hasSeenIntro}
                 className="text-subheading-lg text-text-primary"
               >
                 {subheadline}
