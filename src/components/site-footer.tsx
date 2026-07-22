@@ -75,8 +75,8 @@ export function SiteFooter() {
         <NewsletterForm />
 
         <div className="bg-grain relative mt-40 rounded-xl bg-[var(--color-bg-base)] p-6 md:mt-64 md:px-[54px] md:py-16">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-            {/* Box 1: Next Session Box (Left Half - No rounded edges, no icon) */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-[1.25fr_1.2fr] md:gap-8">
+            {/* Box 1: Next Session Box (Left Column) */}
             <div className="group bg-grain relative overflow-hidden rounded-none bg-[var(--purple-900)] px-8 py-8 md:px-10 md:py-10 min-h-[160px] md:min-h-[180px] flex flex-col justify-between">
               {/* Silna Health-inspired bottom glow (subtle hover) */}
               <div
@@ -106,8 +106,8 @@ export function SiteFooter() {
               </div>
             </div>
 
-            {/* Box 2: Donate Box - No Fill, No Stroke, No rounded edges, No icon (Right Half) */}
-            <div className="relative overflow-hidden rounded-none px-2 py-6 md:px-4 md:py-8 min-h-[160px] md:min-h-[180px] flex flex-col justify-between">
+            {/* Box 2: Donate Box - Aligned with Crisis Support column (Right Column) */}
+            <div className="relative overflow-hidden rounded-none px-2 py-6 md:px-[40px] md:py-10 min-h-[160px] md:min-h-[180px] flex flex-col justify-between">
               <div className="relative z-10">
                 <h3 className="text-title-xs text-text-brand leading-snug max-w-lg">
                   Every dollar counts. Contribute now to help us reach our goal.

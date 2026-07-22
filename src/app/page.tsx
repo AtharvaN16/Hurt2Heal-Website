@@ -133,8 +133,8 @@ export default function Home() {
 
       <section className="w-full px-6 md:px-12 lg:px-16 pt-12 pb-32 text-left flex flex-col md:flex-row md:justify-center items-start gap-6 md:gap-12">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, filter: "blur(12px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.8, ease: EASE }}
           className="w-full shrink-0 space-y-4 md:w-96"
@@ -153,6 +153,7 @@ export default function Home() {
               hidden: {},
               visible: {
                 transition: {
+                  delayChildren: 1.2,
                   staggerChildren: 0.08,
                 },
               },
@@ -234,10 +235,10 @@ export default function Home() {
             </motion.span>
           </motion.h2>
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, filter: "blur(12px)" }}
+            whileInView={{ opacity: 1, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+            transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             className="space-y-6"
           >
             <p className="text-subheading-sm text-text-primary">

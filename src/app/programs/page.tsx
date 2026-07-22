@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
-import { getProgramsContent } from "@/lib/content";
+import { ProgramAccordionCard } from "@/components/program-accordion-card";
 
 export default function ProgramsPage() {
-  const content = getProgramsContent();
-
   return (
     <PageShell>
       <nav className="text-center text-body-md text-text-secondary mb-20 md:mb-40">
@@ -12,15 +10,15 @@ export default function ProgramsPage() {
         <span className="mx-2">/</span>
         <span className="text-text-primary font-semibold">Programs &amp; Events</span>
       </nav>
-      <h1 className="text-3xl font-semibold tracking-tight mt-4">
-        Our Healing Spaces
+
+      <h1 className="text-title-md font-serif text-text-brand text-center mt-4 mb-20 md:mb-36">
+        Our Upcoming events
       </h1>
-      <p className="mt-6 text-lg text-text-secondary">
-        {content.intro}
-      </p>
-      <p className="mt-6 rounded-lg border border-black/10 p-4 text-sm dark:border-white/10">
-        {content.privacyNote}
-      </p>
+
+      {/* Interactive Accordion Program Card */}
+      <div className="mt-8 pb-64 md:pb-[360px]">
+        <ProgramAccordionCard />
+      </div>
     </PageShell>
   );
 }

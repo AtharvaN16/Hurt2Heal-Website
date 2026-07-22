@@ -19,16 +19,27 @@ export function FAQAccordion({
   const isCompact = size === "compact";
 
   return (
-    <div>
+    <motion.div
+      initial={isCompact ? undefined : "hidden"}
+      whileInView={isCompact ? undefined : "visible"}
+      viewport={isCompact ? undefined : { once: true, amount: 0.3 }}
+      variants={
+        isCompact
+          ? undefined
+          : { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }
+      }
+    >
       {faqs.map((faq, i) => {
         const isOpen = openIndex === i;
         return (
           <motion.div
             key={faq.question}
-            initial={isCompact ? undefined : { opacity: 0, y: 24 }}
-            whileInView={isCompact ? undefined : { opacity: 1, y: 0 }}
-            viewport={isCompact ? undefined : { once: true, amount: 0.6 }}
-            transition={isCompact ? undefined : { duration: 0.8, delay: i * 0.08, ease: EASE }}
+            variants={
+              isCompact
+                ? undefined
+                : { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
+            }
+            transition={isCompact ? undefined : { duration: 0.8, ease: EASE }}
             className="border-b border-text-disabled/30"
           >
             <button
@@ -104,6 +115,6 @@ export function FAQAccordion({
           </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 }

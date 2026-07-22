@@ -37,9 +37,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${lora.variable} ${lato.variable} ${latoMedium.variable} min-h-full antialiased`}
+      className={`${lora.variable} ${lato.variable} ${latoMedium.variable} min-h-full antialiased overflow-x-hidden`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden">
         <SiteNav />
         <div className="flex-1">{children}</div>
       </body>

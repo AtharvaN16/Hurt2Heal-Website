@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { motion } from "framer-motion";
 import { CaretRight } from "@phosphor-icons/react/dist/ssr";
 
 type FieldName = "firstName" | "lastName" | "email";
@@ -57,7 +58,12 @@ export function NewsletterForm() {
       </div>
 
       {/* Merged frame containing input fields and submit button */}
-      <div className="bg-grain relative flex min-h-[380px] flex-col justify-center rounded-none bg-white px-8 py-14 md:min-h-[440px] md:px-14 md:py-18 lg:py-20">
+      <motion.div
+        initial={{ opacity: 0, x: 120, filter: "blur(12px)" }}
+        whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="bg-grain relative flex min-h-[380px] flex-col justify-center rounded-none bg-white px-8 py-14 md:min-h-[440px] md:px-14 md:py-18 lg:py-20">
         <div className="grid gap-8 sm:grid-cols-[1fr_220px] md:gap-10 lg:gap-14 items-stretch">
           <div className="flex flex-col gap-6">
             {FIELDS.map((field) => {
@@ -112,7 +118,7 @@ export function NewsletterForm() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </form>
   );
 }
